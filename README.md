@@ -233,8 +233,6 @@ Add the following information to your trip dashboard:
 
 * Use [Google Charts](https://developers.google.com/chart/) to display information on one or more of your dashboards.
 * Read about [JSON](http://www.ruby-doc.org/stdlib-2.0/libdoc/json/rdoc/JSON.html). Create an endpoint at `api/v1/stations/:id` that responds to requests with JSON instead of HTML.
-* Deploy your application to [Heroku](https://devcenter.heroku.com/articles/rack)
-* Import minute by minute data for stations and use that data to create additional analytics.
 * Add latitude and longitude to your station table. Create a Google map with pins for each of the stations.
 
 ## Evaluation Rubric
