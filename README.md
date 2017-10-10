@@ -211,6 +211,8 @@ Additionally, users should be able to delete a the weather conditions for a part
 
 Add the `weather.csv` file to your `db/csv` directory, and update your `seed.rb` file so that it also imports the information in `weather.csv`. Be sure to adjust your seed file so that when it is run it does not create duplicate data.
 
+**Note:** The data in the `weather.csv` file includes information for multiple zip codes. For the purpose of this project, we would like to assume that the weather in San Francisco is uniform across all Station locations. **Only import the weather data from a single zip code.** Ignore the remaining data.
+
 ### Iteration 9
 
 Create a weather dashboard available at `/weather-dashboard` that includes the following information:
