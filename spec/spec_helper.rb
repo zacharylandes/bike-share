@@ -4,6 +4,19 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec'
 require 'capybara/dsl'
 
+
+DatabaseCleaner.strategy = :truncation
+
+RSpec.configure do |config|
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+end
+
 Capybara.app = BikeShareApp
 
 RSpec.configure do |c|

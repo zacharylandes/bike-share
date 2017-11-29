@@ -1,0 +1,7 @@
+<h1>Bikes and stations and all that</h1>
+<% @stations.each do |station| %>
+  <p><a href="/stations/<%= station.id %>" <%= station.name %></a></p>
+  <p><%= station.dock_count %></p>
+  <p><%= station.city %></p>
+  <p><%= station.installation_date %></p>
+<% end %>

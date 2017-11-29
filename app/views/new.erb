@@ -1,0 +1,18 @@
+<h1>Make a new station</h1>
+<form action="/stations/new" method="post">
+  <p>Enter a new station:</p>
+
+  <label for="name">Name</label>
+  <input type='text' name='station[name]' placeholder="Enter station name"/><br/>
+
+  <label for="city">City</label>
+  <input type='text' name='station[city]' placeholder="Enter city"/><br/>
+
+  <label for="dock_count">Dock Count</label>
+  <input type='text' name='station[dock_count]' placeholder="Enter dock count"/><br/>
+
+  <label for="installation_date">Installation Date</label>
+  <input type='text' name='station[installation_date]' placeholder="Enter installation date"/><br/>
+
+  <input type='submit'/>
+</form>
