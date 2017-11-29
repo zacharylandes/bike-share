@@ -1,6 +1,13 @@
-<a href="/stations">Station Index</a>
+<h1><a href="/stations">Station Index</a></h1>
 
-<h1><%= @station.name %></h1>
+<label for="name">Name</label>
+<h3><%= @station.name %></h3>
+
+<label for="dock_count">Dock Count</label>
 <p><%= @station.dock_count %></p>
+
+<label for="city">City</label>
 <p><%= @station.city %></p>
+
+<label for="installation_date">Installation Date</label>
 <p><%= @station.installation_date %></p>
