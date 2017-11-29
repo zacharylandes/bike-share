@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+
+        <h1>Station Dashboard</h1>
+
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-4 col-md-12">
+
+      <p><strong>Total Station Count :</strong><%= @stations.count %></p>
+      <p><strong>Average Bikes per station: </strong><%= @stations.average(:dock_count).to_f%></p>
+      <p><strong>Most Bikes availble per station:</strong> <%= @stations.maximum(:dock_count)%></p>
+
+      <p><strong>Station with the most bikes available : </strong><%= @stations_with_max_bikes %></p>
+
+      <p><strong>Least Bikes availble per station:</strong> <%= @stations.minimum(:dock_count)%></p>
+
+      <p><strong>Station with the least bikes available :</strong>  <%= @stations_with_min_bikes%></p>
+
+      <p><strong>Most recently installed station :</strong>  <%= @newest_station %></p>
+
+      <p><strong>Oldest station :</strong>  <%= @oldest_station %></p>
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </body>
+</html>

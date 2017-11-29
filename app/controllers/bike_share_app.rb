@@ -6,9 +6,20 @@ class BikeShareApp < Sinatra::Base
     erb :index
   end
 
+  get '/station-dashboard' do
+    @stations = Station.all
+    @stations_with_max_bikes = Station.stations_with_max_bikes
+    @stations_with_min_bikes = Station.stations_with_min_bikes
+    @newest_station = Station.recently_installed_station
+    @oldest_station = Station.oldest_station
+
+    erb :dashboard
+  end
+
   get '/stations/new' do
     erb :new
   end
+
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
