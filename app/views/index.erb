@@ -1,15 +1,62 @@
-<h1>Bikes and stations and all that</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
 
-<% @stations.each do |station| %>
-  <p><a href="/stations/<%= station.id %>" </a> <%= station.name %></p>
-  <p><%= station.dock_count %></p>
-  <p><%= station.city %></p>
-  <p><%= station.installation_date %></p>
-  <a href='/stations/<%= station.id  %>/edit'>Edit</a>
-  <form action="/stations/<%= station.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-<% end %>
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
 
-<a href="/stations/new"> Create a new station</a>
+        <h1>Bikes Station Details</h1>
+        <h4><em>Explore the stations near you</em></h4>
+
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-4 col-md-12">
+      
+      <% @stations.each do |station| %>
+        <ul class = "list-group">
+          <li class = "list-group-item">
+            <a href ="/stations/<%= station.id %>" ><h3><%= station.name %></h3></a>
+            <p> Dock Count: <strong><%= station.dock_count %></strong> </p>
+            <p> City: <strong><%= station.city %></strong></p>
+            <p> Installation Date: <strong><%= station.installation_date %></strong> </p>
+
+            <a href='/stations/<%= station.id  %>/edit'>Edit</a>
+
+            <form action="/stations/<%= station.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class = "btn btn-danger"type="submit" value="delete"/>
+            </form>
+
+          </li>
+        </ul>
+        
+      <% end %>
+
+      <ul class = "list-group">
+        <li class = "list-group-item"><a href="/stations/new"> Create a new station</a></li>
+      </ul>
+      
+      </div>
+  </div>
+</div>
+
+
+
+  
+  
+
+
+  </body>
+</html>
+
+
+
