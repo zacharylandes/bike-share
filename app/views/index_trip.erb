@@ -31,10 +31,21 @@
               <p> Bike id: <strong><%= trip.bike_id %></strong> </p>
               <p> Subscription type: <strong><%= trip.subscription_type %></strong> </p>
               <p> Zip Code: <strong><%= trip.zip_code %></strong> </p>
+
+              <a href='/trips/<%= trip.id  %>/edit'>Edit</a>
+
+              <form action="/trips/<%= trip.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class = "btn btn-danger"type="submit" value="delete"/>
+              </form>
             </li>
           </ul>
 
          <% end %>
+
+         <ul class = "list-group">
+           <li class = "list-group-item"><a href="/trips/new"> Create a new trip</a></li>
+         </ul>
 
       </div>
   </div>
