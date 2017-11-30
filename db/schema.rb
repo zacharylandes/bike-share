@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20171129235304) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.date "start_date"
+    t.datetime "start_date"
     t.text "start_station"
-    t.date "end_date"
+    t.datetime "end_date"
     t.text "end_station"
     t.integer "bike_id"
     t.text "subscription_type"

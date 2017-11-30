@@ -1,0 +1,30 @@
+<h1>Make a new Trip</h1>
+<form action="/trips/new" method="post">
+  <p>Enter details of new trip</p>
+
+  <label for="duration" >Duration</label>
+  <input type='text' name='trip[duration]' placeholder="Enter duration" required/><br/>
+
+  <label for="start_date">Start Date</label>
+  <input type='text' name='trip[start_date]' placeholder="Enter start date" required/><br/>
+
+  <label for="start_station">Start Station</label>
+  <input type='text' name='trip[start_station]' placeholder="Enter start station" required/><br/>
+
+  <label for="end_date">End date</label>
+  <input type='text' name='station[end_date]' placeholder="Enter end date" required/><br/>
+
+  <label for="end_station">End Station</label>
+  <input type='text' name='station[end_station]' placeholder="Enter end station" required/><br/>
+
+  <label for="bike_id">Bike ID</label>
+  <input type='text' name='station[bike_id]' placeholder="Enter bike id" required/><br/>
+
+  <label for="subscription_type">Subscription Type</label>
+  <input type='text' name='station[subscription_type]' placeholder="Enter subscription type" required/><br/>
+
+  <label for="zip_code">Zip Code</label>
+  <input type='text' name='station[zip_code]' placeholder="Enter zip code" required/><br/>
+
+  <input type='submit'/>
+</form>
