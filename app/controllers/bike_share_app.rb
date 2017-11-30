@@ -6,6 +6,13 @@ class BikeShareApp < Sinatra::Base
     erb :index
   end
 
+  get '/trips' do 
+    @trips = Trip.all
+
+    erb :index_trip
+  end
+
+
   get '/station-dashboard' do
     @stations = Station.all
     @stations_with_max_bikes = Station.stations_with_max_bikes
@@ -26,6 +33,7 @@ class BikeShareApp < Sinatra::Base
     erb :edit
   end
 
+  
   post '/stations/new' do
     station = Station.create(params[:station])
     redirect '/stations'
