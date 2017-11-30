@@ -10,6 +10,8 @@ end
 
 trips = CSV.open './db/csv/trip_fixtures.csv', headers:true, header_converters: :symbol
 trips.each do |row|
+  start_date = DateTime.strptime(row[:start_date], '%m/%d/%Y %k:%M')
+  end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y %k:%M')
+  Trip.create!(duration: row[:duration], start_date: start_date, start_station_name: row[:start_station_name], end_date: end_date, end_station_name: row[:end_station_name], bike_id: row[:bike_id], subscription_type: row[:subscription_type], zip_code: row[:zip_code])
   # require 'pry';binding.pry
-  Trip.create!(duration: row[:duration], start_date: row[:start_date], start_station_name: row[:start_station_name], end_date: row[:end_date], end_station_name: row[:end_station_name], bike_id: row[:bike_id], subscription_type: row[:subscription_type], zip_code: row[:zip_code])
 end
