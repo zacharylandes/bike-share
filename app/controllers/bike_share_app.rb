@@ -11,9 +11,11 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.order(:start_date).reverse.first(30)
+
     erb :"trips/index"
   end
+
 
   get '/trips/new' do
     # require 'pry';binding.pry
