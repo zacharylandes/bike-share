@@ -19,11 +19,10 @@
   <div class="container">
   <div class="row">
       <div class="col-xs-4 col-md-12">
-
          <% @trips.each do |trip| %>
           <ul class = "list-group">
             <li class = "list-group-item">
-              <p> Duration: <strong><%= trip.duration %></strong> </p>
+              <p> Duration: <strong><%=  trip.duration %></strong> </p>
               <p> Start date: <strong><%= trip.start_date %></strong> </p>
               <p> Start station: <strong><%= trip.start_station_name %></strong> </p>
               <p> End date: <strong><%= trip.end_date %></strong> </p>
@@ -53,7 +52,7 @@
   </div>
 </div>
 
-
+<%= will_paginate @trips, :page_links => false %>
 
 
 

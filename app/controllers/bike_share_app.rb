@@ -1,5 +1,10 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 require 'pry'
 class BikeShareApp < Sinatra::Base
+  configure{ register WillPaginate::Sinatra}
+  set :method_override, true
 
   get '/' do
     erb :welcome
@@ -11,14 +16,11 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.order(:start_date).reverse.first(30)
-
+    @trips = Trip.paginate(page: params[:page], per_page: 30)
     erb :"trips/index"
   end
 
-
   get '/trips/new' do
-    # require 'pry';binding.pry
     erb :"trips/new"
   end
 
@@ -27,14 +29,15 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
+
+   get '/trips/:id' do
+     @trip = Trip.find(params[:id])
+     erb :"trips/show"
+   end
+
   put '/trips/:id' do |id|
     Trip.update(id.to_i, params[:trip])
     redirect "/trips"
-  end
-
-  get '/trips/:id' do
-    @trip = Trip.find(params[:id])
-    erb :"trips/show"
   end
 
   get '/trips/:id/edit' do
