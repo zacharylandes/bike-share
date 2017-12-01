@@ -20,9 +20,14 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/new"
   end
 
+  post '/trips/new' do
+    trip = Trip.create(params[:trip])
+    redirect '/trips'
+  end
+
   put '/trips/:id' do |id|
     Trip.update(id.to_i, params[:trip])
-    redirect "/trips/#{id}"
+    redirect "/trips"
   end
 
   get '/trips/:id' do
@@ -35,6 +40,10 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/edit"
   end
 
+  delete '/trips/:id' do |id|
+    trip = Trip.destroy(id.to_i)
+    redirect '/trips'
+  end
 
   get '/station-dashboard' do
     @stations = Station.all
