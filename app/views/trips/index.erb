@@ -10,7 +10,7 @@
         <div class="col-xs-4 col-md-12">
 
         <h1>Trip details</h1>
-
+          <p>Here are the trip details</p>
         </div>
     </div>
   </div>
@@ -33,6 +33,8 @@
               <p> Zip Code: <strong><%= trip.zip_code %></strong> </p>
 
               <a href='/trips/<%= trip.id  %>/edit'>Edit</a>
+              <p><a href='/trips/<%= trip.id  %>'>View</a></p>
+
 
               <form action="/trips/<%= trip.id %>" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
