@@ -16,6 +16,7 @@ RSpec.describe Trip do
       it 'returns the start date of the trip' do
         date = DateTime.new(5-14-2010)
         trip = Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
+
         expect(trip.start_date).to eq("-2019-01-01 00:00:00 UTC")
       end
     end
@@ -32,6 +33,7 @@ RSpec.describe Trip do
       it 'returns the end date of the trip' do
         date = DateTime.new(5-14-2010)
         trip = Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
+
         expect(trip.end_date).to eq("-2019-01-01 00:00:00 UTC")
       end
     end
@@ -48,7 +50,7 @@ RSpec.describe Trip do
       it 'returns the bike id of the trip' do
         trip = Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
-       expect(trip.bike_id).to eq("540")
+        expect(trip.bike_id).to eq("540")
       end
     end
 

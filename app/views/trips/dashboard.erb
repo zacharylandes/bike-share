@@ -31,7 +31,18 @@
 
       <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start%></p>
       <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end%></p>
-      <p><strong>Trips per month: </strong><%= @trips.trips_per_month%></p>
+      <p><strong>Monthly trip breakdown for each year: </strong><%@trips.trips_per_month.map do |trip|%></p>
+        <p>
+          <%= trip.to_json.delete "{}"%>
+        </p>
+        <%end%>
+        <p><strong>Total rides per year</strong><% @trips.sum_trips_per_year.each do |trip|%></p>
+            <p>  <%=trip[0].to_i%>:   <%= trip[1]%></p>
+        <%end%>
+
+
+
+
 
 
       </div>

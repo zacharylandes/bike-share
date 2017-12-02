@@ -38,14 +38,28 @@ class Trip < ActiveRecord::Base
       # station.name
   end
 
-  def self.trips_per_month
-    years = distinct.pluck('extract(year from start_date)')
-    years.map do |year|
-      # binding.pry
-      {
-        year => where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+  def self.years
+    distinct.pluck('extract(year from start_date)')
+  end
 
-      }
+def self.find_month_names(month)
+  Date::MONTHNAMES[month]
+end
+
+  def self.trips_per_month
+    years.map do |year|
+      found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+      months = Hash[found.map{|month,count|[month.to_i,count]}]
+      month_names = Hash[months.map{|month,count|[find_month_names(month),count]}]
+      {year => month_names }
     end
+  end
+
+  def self.sum_trips_per_year
+     result = years.map do |year|
+      found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+      end
+      result = result.map {|result| result.values.sum}
+      years.zip(result)
   end
 end
