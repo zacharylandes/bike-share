@@ -18,6 +18,7 @@ describe "when a visitor visits the trips index" do
   it "clicks the name of the trip to display its information" do
     Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
     visit '/trips'
+    # binding.pry
     click_link('View')
 
     expect(page).to have_content("5")

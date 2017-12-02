@@ -1,18 +1,14 @@
 require 'will_paginate'
+# require 'pry'
 require 'will_paginate/active_record'
 
-require 'pry'
+
 class BikeShareApp < Sinatra::Base
   configure{ register WillPaginate::Sinatra}
   set :method_override, true
 
   get '/' do
     erb :welcome
-  end
-
-  get '/stations' do
-    @stations = Station.all
-    erb :"stations/index"
   end
 
   get '/trips' do
@@ -48,6 +44,17 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do |id|
     trip = Trip.destroy(id.to_i)
     redirect '/trips'
+  end
+
+  get '/trips-dashboard' do
+    @trips = Trip.all
+    # binding.pry
+    erb :"trips/dashboard"
+  end
+
+  get '/stations' do
+    @stations = Station.all
+    erb :"stations/index"
   end
 
   get '/station-dashboard' do

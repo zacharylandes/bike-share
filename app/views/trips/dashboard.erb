@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+
+        <h1>Station Dashboard</h1>
+
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-4 col-md-12">
+
+      <p><strong>Average Trip Length: </strong><%= @trips.average_trip_length %></p>
+
+      <p><strong>Longest Ride: </strong><%= @trips.longest_ride%></p>
+
+      <!-- <p><strong>Longest Ride: </strong><%= @trips.shortest_ride%></p>
+ -->
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </body>
+</html>

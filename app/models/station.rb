@@ -1,5 +1,7 @@
 class Station < ActiveRecord::Base
 
+  has_many :trips
+
   validates_presence_of :name, :dock_count, :city, :installation_date
 
   def self.stations_with_max_bikes
@@ -30,8 +32,6 @@ class Station < ActiveRecord::Base
   def self.minimum_dock_count
     minimum(:dock_count)
   end
-
-
 
 
   def self.average_dock_count
