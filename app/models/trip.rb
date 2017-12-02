@@ -28,12 +28,24 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_at_start
-      max = group(:start_station_id).count.max_by{|id,count| count}.first
-      station = Station.where(:id => max)
-# binding.pry
-          # station.name
-      # max.max_by{|id,count| count}
-    # binding.pry
+      max = group(:start_station_id).order("count_id DESC").count(:id).first[0]
+      Station.find(max).name
+  end
 
+  def self.station_with_most_rides_at_end
+      max = group(:end_station_id).order("count_id DESC").count(:id).first[0]
+      Station.find(max).name
+      # station.name
+  end
+
+  def self.trips_per_month
+    years = distinct.pluck('extract(year from start_date)')
+    years.map do |year|
+      # binding.pry
+      {
+        year => where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+
+      }
+    end
   end
 end

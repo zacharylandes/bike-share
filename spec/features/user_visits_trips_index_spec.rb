@@ -16,7 +16,8 @@ describe "when a visitor visits the trips index" do
   end
 
   it "clicks the name of the trip to display its information" do
-    Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+    date = DateTime.new(5-14-2010)
+    Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
     visit '/trips'
     # binding.pry
     click_link('View')
@@ -26,8 +27,9 @@ describe "when a visitor visits the trips index" do
   end
 
   it "clicks the edit link to edit trip information" do
-    Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
-    visit '/trips'
+    date = DateTime.new(5-14-2010)
+    Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
+       visit '/trips'
     click_link('Edit')
 
     expect(page).to have_content("Edit your trip")
@@ -35,12 +37,13 @@ describe "when a visitor visits the trips index" do
   end
 
   it "clicks the delete button which deletes trip and redirects to index" do
-    Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
-    visit '/trips'
+    date = DateTime.new(5-14-2010)
+    Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
+     visit '/trips'
     click_on('delete')
 
     expect(page).to have_content("Trip details")
-      expect(Trip.count).to eq(0)
+    expect(Trip.count).to eq(0)
   end
 
   # it "clicks the edit link and is presented an edit form" do
