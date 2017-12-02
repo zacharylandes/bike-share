@@ -31,18 +31,21 @@
 
       <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start%></p>
       <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end%></p>
-      <p><strong>Monthly trip breakdown for each year: </strong><%@trips.trips_per_month.map do |trip|%></p>
-        <p>
-          <%= trip.to_json.delete "{}"%>
-        </p>
-        <%end%>
-        <p><strong>Total rides per year</strong><% @trips.sum_trips_per_year.each do |trip|%></p>
-            <p>  <%=trip[0].to_i%>:   <%= trip[1]%></p>
-        <%end%>
-
-
-
-
+      <p><strong>Monthly trip breakdown for each year: </strong><%@trips.trips_per_month.each do |trip|%></p>
+        <p><%= trip.to_json.delete "{}"%></p>
+      <%end%>
+      <p><strong>Total rides per year</strong><% @trips.sum_trips_per_year.each do |trip|%></p>
+        <p>  <%=trip[0].to_i%>:   <%= trip[1]%></p>
+      <%end%>
+      <p> <strong> Most Ridden bike</strong></p>
+      <p>  Bike with id <%=@trips.most_ridden_bike[0] %> has <%=@trips.most_ridden_bike[1] %> trips</p>
+      <p> <strong> Least Ridden bike</strong></p>
+      <p>  Bike with id <%=@trips.least_ridden_bike[0] %> has <%=@trips.least_ridden_bike[1] %> trip</p>
+      <p><%@trips.subscription_type_breakout.to_a.map do |sub| %>
+        <p>There are <%= sub[1]%> trips with a  profile of <%=sub [0]%></p>
+       <%end%>
+      <p>Customers make up <%=@trips.percentage_of_subscriber_type[0]%>% of the total user profiles</p>
+      <p>Subscribers: <%=@trips.percentage_of_subscriber_type[1]%>% of the total user profiles</p>
 
 
       </div>
