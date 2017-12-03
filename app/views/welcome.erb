@@ -1,41 +1,70 @@
-<head>
-  <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <style>
 
-    .jumbotron {
-    background-image: url("https://images.unsplash.com/photo-1499438182938-87d87862e154?auto=format&fit=crop&w=1500&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
-    background-color: #17234E;
-    margin-bottom: 0;`enter code here`
-    min-height: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    -webkit-background-size: cover;
-    background-size: cover;
-    color:white;
+      .jumbotron {
+      background-image: url("https://images.unsplash.com/photo-1499438182938-87d87862e154?auto=format&fit=crop&w=1500&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+      background-color: #17234E;
+      margin-bottom: 0;`enter code here`
+      min-height: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      -webkit-background-size: cover;
+      background-size: cover;
+      color:white;
+      height: 100vh;
+      
+      }
+
+    .jump-buttons{
+      width: 300px;
+      margin: auto;
+      margin-top:150px;
+
     }
+   
+   .target{
+     display:inline-block;
+   }
 
-  </style>
-</head>
+      
+    </style>
+  </head>
+  <body>
+       
+     
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4 col-md-12">
-
-
-
-    <div class="jumbotron">
-      <h1 class="display-3">Welcome to Bike Share</h1>
-      <p class="lead">Changing the way San Franciscans get around town</p>
-      <hr class="my-4">
-      <p>Explore our stations and recent trips below</p>
-      <p class="lead">
-         <h4><a class="btn btn-primary btn-lg" href="/trips">Trips Index</a></h4>
-         <h4 float = ><a class="btn btn-primary btn-lg" href="/stations">Stations Index</a></h4>
-      </p>
-    </div>
+          <div class="jumbotron">
 
 
-    </div>
-  </div>
-</div>
+            <div class="container">
+              <div class="row">
+                <div class=" col-xs-12">
+
+                  <h1 class="display-3">Welcome to Bike Share</h1>
+                  <p class="lead">Changing the way San Franciscans get around town</p>
+                  <hr class="my-4">
+                  <p>Explore our stations and recent trips below</p>
+                  <p class="lead">
+                    <div class = "jump-buttons">
+                      <h4 class = "target"><a class="btn btn-default btn-lg" href="/trips">Trips</a></h4>
+                      <h4 class = "target"><a class="btn btn-default btn-lg" href="/stations">Stations</a></h4>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+
+
+  </body>
+</html>
+
+    
