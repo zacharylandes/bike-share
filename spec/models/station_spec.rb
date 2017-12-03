@@ -101,6 +101,15 @@ RSpec.describe Station do
      expect(Station.minimum_dock_count).to eq(3)
     end
   end
+    describe '.minimum_dock_count' do
+      it 'returns the max dock count' do
+       Station.create(name: "The station", dock_count: 33, city: "San Francisco", installation_date: "04-03-1204")
+       Station.create(name: "Another station", dock_count: 3, city: "Sacramento", installation_date: "03-03-1204")
+       Station.create(name: "That station", dock_count: 23, city: "Los Angeles", installation_date: "02-03-1204")
+
+       expect(Station.minimum_dock_count).to eq(3)
+      end
+    end
 
   describe "validations" do
     it "is invalid without a name" do

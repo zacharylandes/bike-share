@@ -27,6 +27,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_at_start
+     # binding.pry
       max = group(:start_station_id).order("count_id DESC").count(:id).first[0]
       Station.find(max).name
   end
