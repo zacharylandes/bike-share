@@ -80,6 +80,25 @@ class Trip < ActiveRecord::Base
 
   def self.subscription_type_breakout
      group(:subscription_type).order("count_id DESC").count(:id)
-    # binding.pry
+  end
+
+  def self.date_with_most_trips
+      counts = Hash.new(0)
+     date =group(:start_date).order("count_id DESC").count(:id)
+     all_dates =date.keys.map {|date|date.strftime("%m-%d-%y")}
+     all_dates.each do |date|
+       counts[date]+=1
+     end
+     counts.max
+  end
+
+  def self.date_with_least_trips
+      counts = Hash.new(0)
+     date =group(:start_date).order("count_id DESC").count(:id)
+     all_dates =date.keys.map {|date|date.strftime("%m-%d-%y")}
+     all_dates.each do |date|
+       counts[date]+=1
+     end
+     counts.min
   end
 end
