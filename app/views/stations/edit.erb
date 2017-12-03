@@ -1,21 +1,42 @@
-<h1>Edit your station</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 col-md-12">
+          <h1>Edit your station</h1>
 
 
-<form action="/stations/<%= @station.id %>" method="post">
-  <p>Edit</p>
-  <input type="hidden" name="_method" value="PUT" />
+          <form action="/stations/<%= @station.id %>" method="post">
+            <p>Alter the details of your station below</p>
+            <input type="hidden" name="_method" value="PUT" />
 
-  <label for="station_name">Station Name</label>
-  <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
+            <label for="station_name">Station Name</label>
+            <input type='text' class="form-control" name='station[name]' value="<%= @station.name %>"/><br/>
 
-  <label for="dock_count">Dock Count</label>
-  <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
+            <label for="dock_count">Dock Count</label>
+            <input type='text' class="form-control" name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
 
-  <label for="city">City</label>
-  <input type='text' name='station[city]' value="<%= @station.city %>"/><br/>
+            <label for="city">City</label>
+            <input type='text' class="form-control" name='station[city]' value="<%= @station.city %>"/><br/>
 
-  <label for="installation_date">Installation Date</label>
-  <input type='text' name='station[installation_date]' value="<%= @station.installation_date   %>"/><br/>
+            <label for="installation_date">Installation Date</label>
+            <input type='text' class="form-control" name='station[installation_date]' value="<%= @station.installation_date   %>"/><br/>
+            <div class="sumbit_button" align="center">
+              <input class="btn btn-success" type='submit'/>
+            </div>
+          </form>
 
-  <input type='submit'/>
-</form>
+        </div>
+      </div>  
+    </div>
+
+
+
+
+  </body>
+</html>
