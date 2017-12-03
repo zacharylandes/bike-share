@@ -31,6 +31,19 @@ class Trip < ActiveRecord::Base
       Station.find(max).name
   end
 
+  def stations
+    Station.find(params[:id])
+  end
+
+  def self.number_of_rides_started_at_this_station(stations)
+    all_station_id = group(:start_station_id).order("count_id DESC").count(:id)
+    all_station_id.find do |trip_id, station_id|
+      if trip_id == stations
+        station_id
+      end
+    end
+  end
+
   def self.station_with_most_rides_at_end
       max = group(:end_station_id).order("count_id DESC").count(:id).first[0]
       Station.find(max).name
@@ -84,21 +97,22 @@ class Trip < ActiveRecord::Base
 
   def self.date_with_most_trips
       counts = Hash.new(0)
-     date =group(:start_date).order("count_id DESC").count(:id)
-     all_dates =date.keys.map {|date|date.strftime("%m-%d-%y")}
+     date = group(:start_date).order("count_id DESC").count(:id)
+     all_dates = date.keys.map {|date|date.strftime("%m-%d-%y")}
      all_dates.each do |date|
        counts[date]+=1
      end
-     counts.max
+     counts.max_by {|k, v| v}
   end
 
   def self.date_with_least_trips
       counts = Hash.new(0)
-     date =group(:start_date).order("count_id DESC").count(:id)
-     all_dates =date.keys.map {|date|date.strftime("%m-%d-%y")}
+     date = group(:start_date).order("count_id DESC").count(:id)
+     all_dates = date.keys.map {|date|date.strftime("%m-%d-%y")}
      all_dates.each do |date|
        counts[date]+=1
      end
-     counts.min
+     counts.min_by {|k, v| v}
+     #look for active record method with this same functionality
   end
 end

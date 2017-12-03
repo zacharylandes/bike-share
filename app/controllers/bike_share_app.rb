@@ -86,7 +86,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    @trips = Trip.group(:start_station_id).order("count_id DESC").count(:id)
+    @trips = Trip.all
     # binding.pry
     erb :"stations/show"
   end
