@@ -2,12 +2,24 @@
 <html>
   <head>
     <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <style>
+        .btn-success{
+          float:right;
+          margin-top: 30px;
+        }
+      </style>
   </head>
   <body>
 
   <div class="container">
     <div class="row">
         <div class="col-xs-4 col-md-12">
+
+          <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class="active">Trips</li>
+          </ol>
+          <a class="btn btn-success" href="/trips/new"> Create new trip</a> 
 
         <h1>Trip details</h1>
           <p>Explore an overview of recent trip details</p>
@@ -32,28 +44,31 @@
               <p> Subscription type: <strong><%= trip.subscription_type %></strong> </p>
               <p> Zip Code: <strong><%= trip.zip_code %></strong> </p>
 
-              <a href='/trips/<%= trip.id  %>/edit'>Edit</a>
-              <p><a href='/trips/<%= trip.id  %>'>View</a></p>
+              <p><a class="btn btn-warning" href='/trips/<%= trip.id  %>/edit'>Edit</a></p>
+              <p><a class="btn btn-info" href='/trips/<%= trip.id  %>'>View</a></p>
 
 
               <form action="/trips/<%= trip.id %>" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
-                <input class = "btn btn-danger"type="submit" value="delete"/>
+                <input class = "btn btn-danger"type="submit" value="Delete"/>
               </form>
             </li>
           </ul>
 
          <% end %>
 
-         <ul class = "list-group">
-           <li class = "list-group-item"><a href="/trips/new"> Create a new trip</a></li>
-         </ul>
+        <%= will_paginate @trips, :page_links => false %>
+
+      
+
+
+        
 
       </div>
   </div>
 </div>
 
-<%= will_paginate @trips, :page_links => false %>
+
 
 
 
