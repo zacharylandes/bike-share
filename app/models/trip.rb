@@ -27,7 +27,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_at_start
-     # binding.pry
       max = group(:start_station_id).order("count_id DESC").count(:id).first[0]
       Station.find(max).name
   end
@@ -45,9 +44,18 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def self.number_of_rides_ended_at_this_station(stations)
+    all_station_id = group(:end_station_id).order("count_id DESC").count(:id)
+    all_station_id.find do |trip_id, station_id|
+      if trip_id == stations
+        station_id
+      end
+    end
+  end
+
   def self.station_with_most_rides_at_end
-      max = group(:end_station_id).order("count_id DESC").count(:id).first[0]
-      Station.find(max).name
+    max = group(:end_station_id).order("count_id DESC").count(:id).first[0]
+    Station.find(max).name
   end
 
   def self.years
@@ -69,7 +77,7 @@ class Trip < ActiveRecord::Base
 
   def self.sum_trips_per_year
     result = years.map do |year|
-     found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+    found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
     end
     result = result.map {|result| result.values.sum}
     years.zip(result)
@@ -115,5 +123,15 @@ class Trip < ActiveRecord::Base
      end
      counts.min_by {|k, v| v}
      #look for active record method with this same functionality
+  end
+
+  def self.most_frequent_destination(station)
+    stations = where(start_station_id: station).group(:end_station_id).order('count_id DESC').count(:id).first
+    Station.find(stations[0])[:name]
+  end
+
+  def self.most_frequent_origination(station)
+    stations = where(end_station_id: station).group(:start_station_id).order('count_id DESC').count(:id).first
+    Station.find(stations[0])[:name]
   end
 end
