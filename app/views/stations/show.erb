@@ -1,22 +1,71 @@
-<h1><a href="/stations">Station Index</a></h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
 
-<label for="name">Name</label>
-<h3><%= @station.name %></h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 col-md-12">
 
-<label for="dock_count">Dock Count</label>
-<p><%= @station.dock_count %></p>
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/stations">Stations</a></li>
+            <li class="active"><%= @station.name %></li>
+          </ol>
 
-<label for="city">City</label>
-<p><%= @station.city %></p>
 
-<label for="installation_date">Installation Date</label>
-<p><%= @station.installation_date %></p>
+          
+          <h1><%= @station.name %></h1>
 
-<h3>Further station info:</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Dock count</th>
+                <th>City</th>
+                <th>Installation date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><%= @station.dock_count %></th>
+                <td><%= @station.city %></td>
+                <td><%= @station.installation_date %></td>
+              </tr>
+            </tbody>
+          </table>
 
-<p><strong>Number of rides started at this station:</strong></p>
-  <% @trips.find do |k,v| %>
-     <% if k == @station.id %>
-      <%= v %>
-    <% end %>
-  <%end%>
+
+
+         <% if false %>
+
+
+
+
+          <h1><%= @station.name %></h1>
+
+          <label for="dock_count">Dock Count</label>
+          <p><%= @station.dock_count %></p>
+
+          <label for="city">City</label>
+          <p><%= @station.city %></p>
+
+          <label for="installation_date">Installation Date</label>
+          <p><%= @station.installation_date %></p>
+
+          <h3>Further station info:</h3>
+
+          <p><strong>Number of rides started at this station:</strong></p>
+            <% @trips.find do |k,v| %>
+              <% if k == @station.id %>
+                <%= v %>
+              <% end %>
+            <%end%>
+
+
+            <% end %>
+
+        </div>
+      </div>  
+    </div>
