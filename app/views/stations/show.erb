@@ -1,0 +1,31 @@
+<h1><a href="/stations">Station Index</a></h1>
+
+<label for="name">Name</label>
+<h3><%= @station.name %></h3>
+
+<label for="dock_count">Dock Count</label>
+<p><%= @station.dock_count %></p>
+
+<label for="city">City</label>
+<p><%= @station.city %></p>
+
+<label for="installation_date">Installation Date</label>
+<p><%= @station.installation_date %></p>
+
+<h3>Further station info:</h3>
+
+<p><strong>Number of rides started at this station:</strong></p>
+<p><%= @trips.number_of_rides_started_at_this_station(@station.id)[-1] %></p>
+<p><strong>Number of rides ended at this station:</strong></p>
+<p><%= @trips.number_of_rides_ended_at_this_station(@station.id)[-1] %></p>
+<p><strong>Most frequent destination station:</strong></p>
+<p><%= @trips.most_frequent_destination(@station.id) %></p>
+<p><strong>Most frequent origination station:</strong></p>
+<p><%= @trips.most_frequent_origination(@station.id) %></p>
+
+<p><strong>Date with highest number of trips:</strong></p>
+<p><%= @trips.date_with_highest_number_of_trips_started_at_this_station(@station.id) %></p>
+<p><strong>Most frequent zip code for users starting trips:</strong></p>
+<p><%= @trips.most_frequent_zip_code_for_users_starting_trips_at_this_station(@station.id) %></p>
+<p><strong>Bike most frequently used when starting a trip:</strong></p>
+<p><%= @trips.bike_id_most_frequently_starting_a_trip_at_this_station(@station.id) %></p>

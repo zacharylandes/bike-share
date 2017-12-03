@@ -1,0 +1,18 @@
+<h1>Make a new condition</h1>
+<form action="/conditions/new" method="post">
+  <p>Enter a new condition</p>
+
+  <label for="max_temperature_f" >Max Temp</label>
+  <input type='text' name='condition[max_temperature_f]' placeholder="max temp" required/><br/>
+
+  <label for="min_temperature_f">Min Temp</label>
+  <input type='text' name='condition[min_temperature_f]' placeholder="Min temp" required/><br/>
+
+  <label for="mean_temperature_f">Mean Temp</label>
+  <input type='text' name='condition[mean_temperature_f]' placeholder="Mean Temp" required/><br/>
+
+  <label for="installation_date">Installation Date</label>
+  <input type='text' name='condition[installation_date]' placeholder="Enter installation date" required/><br/>
+
+  <input type='submit'/>
+</form>

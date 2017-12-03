@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+
+        <h1>Trip details</h1>
+          <p>Here are the trip details</p>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-4 col-md-12">
+         <% @trips.each do |trip| %>
+          <ul class = "list-group">
+            <li class = "list-group-item">
+              <p> Duration: <strong><%=  trip.duration %></strong> </p>
+              <p> Start date: <strong><%= trip.start_date %></strong> </p>
+              <p> Start station: <strong><%= trip.start_station_name %></strong> </p>
+              <p> End date: <strong><%= trip.end_date %></strong> </p>
+              <p> End station: <strong><%= trip.end_station_name %></strong> </p>
+              <p> Bike id: <strong><%= trip.bike_id %></strong> </p>
+              <p> Subscription type: <strong><%= trip.subscription_type %></strong> </p>
+              <p> Zip Code: <strong><%= trip.zip_code %></strong> </p>
+
+              <a href='/trips/<%= trip.id  %>/edit'>Edit</a>
+              <p><a href='/trips/<%= trip.id  %>'>View</a></p>
+
+
+              <form action="/trips/<%= trip.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class = "btn btn-danger"type="submit" value="delete"/>
+              </form>
+            </li>
+          </ul>
+
+         <% end %>
+
+         <ul class = "list-group">
+           <li class = "list-group-item"><a href="/trips/new"> Create a new trip</a></li>
+         </ul>
+
+      </div>
+  </div>
+</div>
+
+<%= will_paginate @trips, :page_links => false %>
+
+
+
+
+
+  </body>
+</html>
