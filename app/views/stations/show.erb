@@ -11,3 +11,12 @@
 
 <label for="installation_date">Installation Date</label>
 <p><%= @station.installation_date %></p>
+
+<h3>Further station info:</h3>
+
+<p><strong>Number of rides started at this station:</strong></p>
+  <% @trips.find do |k,v| %>
+     <% if k == @station.id %>
+      <%= v %>
+    <% end %>
+  <%end%>
