@@ -1,29 +1,49 @@
-<head>
-  <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
 
-<h1><a href="/trips">Trips Index</a></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
 
-<label for="duration">Duration</label>
-<p><%= @trip.duration %></p>
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/trips">Trips</a></li>
+            <li class="active"><%= @trip.id %></li>
+          </ol>
 
-<label for="start_date">Start Date</label>
-<p><%= @trip.start_date %></p>
+          <h1><%= @trip.start_station_name %> <i class="fa fa-arrow-right fa-fw" aria-hidden="true"></i><%= @trip.end_station_name%></h1>
 
-<label for="start_station_name">Start Station</label>
-<p><%= @trip.start_station_name %></p>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Duration</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Bike ID</th>
+                <th>Subscription type</th>
+                <th>Zip code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><%= @trip.duration %></th>
+                <td><%= @trip.start_date %></td>
+                <td><%= @trip.end_date %></td>
+                <td><%= @trip.bike_id %></td>
+                <td><%= @trip.subscription_type %></td>
+                <td><%= @trip.zip_code %></td>
+              </tr>
+            </tbody>
+          </table>
 
-<label for="end_date">End Date</label>
-<p><%= @trip.end_date %></p>
+        </div>
+      </div>  
+    </div>    
 
-<label for="end_station_name">End Station</label>
-<p><%= @trip.end_station_name %></p>
-
-<label for="bike_id">Bike ID</label>
-<p><%= @trip.bike_id %></p>
-
-<label for="subscription_type">Subscription</label>
-<p><%= @trip.subscription_type %></p>
-
-<label for="zip_code">Zip Code</label>
-<p><%= @trip.zip_code %></p>
+  </body>
+</html>

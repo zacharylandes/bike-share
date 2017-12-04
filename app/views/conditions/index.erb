@@ -2,15 +2,27 @@
 <html>
   <head>
     <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <style>
+        .btn-success{
+          float:right;
+          margin-top: 30px;
+        }
+      </style>
   </head>
   <body>
 
   <div class="container">
     <div class="row">
-        <div class="col-xs-4 col-md-12">
+        <div class="col-xs-12">
+
+         <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class="active">Conditions</li>
+          </ol>
+          <a class="btn btn-success" href="/conditions/new"> Create new condition</a> 
 
         <h1>Weather conditions</h1>
-
+        <p>Explore an overview of recent weather conditions</p>
         </div>
     </div>
   </div>
@@ -18,7 +30,7 @@
 
   <div class="container">
   <div class="row">
-      <div class="col-xs-4 col-md-12">
+      <div class="col-xs-12">
       <% @conditions.each do |condition| %>
         <ul class = "list-group">
           <li class = "list-group-item">
@@ -32,11 +44,11 @@
             <p> Precipitation: <strong><%= condition.precipitation_inches.to_f%></strong> </p>
 
 
-            <a href='/conditions/<%= condition.id  %>/edit'>Edit</a>
+            <p><a class="btn btn-warning" href='/conditions/<%= condition.id  %>/edit'>Edit</a></p>
 
             <form action="/conditions/<%= condition.id %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
-              <input class = "btn btn-danger"type="submit" value="delete"/>
+              <input class = "btn btn-danger"type="submit" value="Delete"/>
             </form>
 
           </li>
