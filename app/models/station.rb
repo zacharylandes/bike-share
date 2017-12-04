@@ -19,8 +19,8 @@ class Station < ActiveRecord::Base
   end
 
   def self.recently_installed_station
-    min  =  minimum(:installation_date)
-    find_by(installation_date: min).name
+      min  =  minimum(:installation_date)
+      find_by(installation_date: min).name
   end
 
   def self.oldest_station

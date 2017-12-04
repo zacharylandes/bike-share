@@ -12,7 +12,7 @@ describe "when a visitor visits the conditions index" do
     click_link('Create a new condition')
 
     expect(page).to have_current_path("/conditions/new")
-    expect(page).to have_content("Make a new condition")
+    expect(page).to have_content("Make new condition")
   end
 
   it "clicks the name of the condition to display its information" do
@@ -64,7 +64,7 @@ describe "when a visitor visits the conditions index" do
         )
     visit '/conditions'
 
-    click_on('delete')
+    click_on('Delete')
 
     expect(page).to have_content("Weather conditions")
   end
