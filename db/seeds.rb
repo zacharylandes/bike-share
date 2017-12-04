@@ -1,8 +1,11 @@
 require './app/models/station'
 require './app/models/trip'
 require './app/models/condition'
-
+require 'database_cleaner'
 require 'csv'
+
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :symbol
 stations.each do |row|

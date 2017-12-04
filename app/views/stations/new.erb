@@ -1,18 +1,45 @@
-<h1>Make a new station</h1>
-<form action="/stations/new" method="post">
-  <p>Enter a new station</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
 
-  <label for="name" >Name</label>
-  <input type='text' name='station[name]' placeholder="Enter station name" required/><br/>
+   <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
 
-  <label for="city">City</label>
-  <input type='text' name='station[city]' placeholder="Enter city" required/><br/>
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/stations">Stations</a></li>
+            <li class="active">New</li>
+          </ol>
 
-  <label for="dock_count">Dock Count</label>
-  <input type='text' name='station[dock_count]' placeholder="Enter dock count" required/><br/>
+          <h1>Make a new station</h1>
+          <form action="/stations/new" method="post">
+            <p>Enter details for your new station below</p>
 
-  <label for="installation_date">Installation Date</label>
-  <input type='text' name='station[installation_date]' placeholder="Enter installation date" required/><br/>
+            <label for="name" >Name</label>
+            <input type='text' class="form-control" name='station[name]' placeholder="e.g. St James Park" required/><br/>
 
-  <input type='submit'/>
-</form>
+            <label for="city">City</label>
+            <input type='text' class="form-control" name='station[city]' placeholder="e.g. San Jose" required/><br/>
+
+            <label for="dock_count">Dock Count</label>
+            <input type='text' class="form-control" name='station[dock_count]' placeholder="e.g. 15" required/><br/>
+
+            <label for="installation_date">Installation Date</label>
+            <input type='text' class="form-control" name='station[installation_date]' placeholder="e.g. 8/6/2013" required/><br/>
+              <div class="sumbit_button" align="center">
+                <input class="btn btn-success" type='submit'/>
+              </div>
+          </form>
+
+        </div>
+      </div>  
+  </div>
+
+
+  </body>
+
+</html>
