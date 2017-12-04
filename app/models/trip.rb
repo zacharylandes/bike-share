@@ -105,7 +105,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.date_with_most_trips
-      counts = Hash.new(0)
+     counts = Hash.new(0)
      date = group(:start_date).order("count_id DESC").count(:id)
      all_dates = date.keys.map {|date|date.strftime("%m-%d-%y")}
      all_dates.each do |date|
@@ -122,7 +122,6 @@ class Trip < ActiveRecord::Base
        counts[date]+=1
      end
      counts.min_by {|k, v| v}
-     #look for active record method with this same functionality
   end
 
   def self.most_frequent_destination(station)

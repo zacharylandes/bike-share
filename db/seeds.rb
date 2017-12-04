@@ -15,7 +15,17 @@ trips.each do |row|
   start_date = DateTime.strptime(row[:start_date], '%m/%d/%Y %k:%M')
   end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y %k:%M')
 
-  Trip.create!(duration: row[:duration], start_date: start_date, start_station_name: row[:start_station_name], start_station_id: row[:start_station_id], end_date: end_date, end_station_name: row[:end_station_name], end_station_id: row[:end_station_id], bike_id: row[:bike_id], subscription_type: row[:subscription_type], zip_code: row[:zip_code])
+  Trip.create!(
+      duration: row[:duration],
+      start_date: start_date,
+      start_station_name: row[:start_station_name],
+      start_station_id: row[:start_station_id],
+      end_date: end_date,
+      end_station_name: row[:end_station_name],
+      end_station_id: row[:end_station_id],
+      bike_id: row[:bike_id],
+      subscription_type: row[:subscription_type],
+      zip_code: row[:zip_code])
   # require 'pry';binding.pry
 end
 
