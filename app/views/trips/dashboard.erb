@@ -15,20 +15,14 @@
     </div>
   </div>
 
-
   <div class="container">
   <div class="row">
       <div class="col-xs-4 col-md-12">
 
       <p><strong>Average Trip Length: </strong><%= @trips.average_trip_length %></p>
-
       <p><strong>Longest Ride: </strong><%= @trips.longest_ride%></p>
-
       <p><strong>Shortest Ride: </strong><%= @trips.shortest_ride%></p>
-
-
       <p><strong>Station with most rides at start: </strong><%= @trips.shortest_ride%></p>
-
       <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start%></p>
       <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end%></p>
       <p><strong>Monthly trip breakdown for each year: </strong><%@trips.trips_per_month.each do |trip|%></p>
@@ -53,17 +47,10 @@
       <p> <strong>Date with lowest number of trips:</strong>
 
       <p><%=@trips.date_with_least_trips[0]%> had <%=@trips.date_with_least_trips[1]%> trips</p>
-      <p> Most frequent destination<%=@trips.most_frequent_destination(station)%></p>
-
 
       </div>
   </div>
 </div>
-
-
-
-
-
 
 
   </body>

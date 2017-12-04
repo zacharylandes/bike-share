@@ -124,9 +124,11 @@ RSpec.describe Trip do
         date = DateTime.new(5-14-2010)
         Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
         Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+        Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
-        Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
-        Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+
+        Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+        Station.create!(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
        expect(Trip.station_with_most_rides_at_start).to eq("Another station")
       end
@@ -135,6 +137,7 @@ RSpec.describe Trip do
       it 'returns the station with most rides at the end' do
         date = DateTime.new(5-14-2010)
         Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+        Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
         Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
         Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
@@ -256,7 +259,7 @@ RSpec.describe Trip do
       Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-     expect(Trip.date_with_most_trips).to eq( ["12-03-17", 1])
+     expect(Trip.date_with_most_trips).to eq(["12-04-17", 1])
     end
   end
 
@@ -269,7 +272,72 @@ RSpec.describe Trip do
       Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-     expect(Trip.date_with_least_trips).to eq( ["12-03-17", 1])
+     expect(Trip.date_with_least_trips).to eq( ["12-04-17", 1])
+    end
+  end
+
+  describe '.most_frequent_destination' do
+    it 'returns the most frequent desitination' do
+      date = Time.now
+      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 2)
+
+      station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+
+      expect(Trip.most_frequent_destination(station)).to eq( "That station")
+    end
+  end
+
+  describe '.most_frequent_origination' do
+    it 'returns the most frequent origination' do
+      date = Time.now
+      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219",end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219",end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 2)
+
+      station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+      station1 = Station.create!(id:2, name: "This station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+
+      expect(Trip.most_frequent_origination(station)).to eq( "This station")
+    end
+  end
+
+  describe '.date_with_highest_number_of_trips_started_at_this_station' do
+    it 'returns the date with the highest number of trips at that station' do
+      date = Time.now
+      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:3,end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:3,end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:2,end_station_id: 2)
+
+      station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+
+      expect(Trip.date_with_highest_number_of_trips_started_at_this_station(station)).to eq("12/4/2017")
+    end
+  end
+
+  describe '.most_frequent_zip_code_for_users_starting_trips_at_this_station' do
+    it 'returns the most frequest zip code for that station' do
+      date = Time.now
+      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:3,end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:3,end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80229", start_station_id:2,end_station_id: 2)
+
+      station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+
+      expect(Trip.most_frequent_zip_code_for_users_starting_trips_at_this_station(station)).to eq("80219")
+    end
+  end
+  describe '.bike_id_most_frequently_starting_a_trip_at_this_station' do
+    it 'returns the bike most frequently starting at that station' do
+      date = Time.now
+      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:3,end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id:3,end_station_id: 3)
+      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "40", subscription_type: "Subscriber", zip_code: "80229", start_station_id:2,end_station_id: 2)
+
+      station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+
+      expect(Trip.bike_id_most_frequently_starting_a_trip_at_this_station(station)).to eq("540")
     end
   end
 
