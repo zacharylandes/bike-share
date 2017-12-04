@@ -135,8 +135,8 @@ class Trip < ActiveRecord::Base
   end
 
   def self.date_with_highest_number_of_trips_started_at_this_station(station)
-    date = where(start_station_id: station).group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
-    "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}"
+    date = where(start_station_id: station).group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first.first
+    # "#{date[0]}/#{date[1]}/#{date[2]}"
   end
 
   def self.most_frequent_zip_code_for_users_starting_trips_at_this_station(station)
