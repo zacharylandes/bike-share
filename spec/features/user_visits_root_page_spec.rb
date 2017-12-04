@@ -16,7 +16,7 @@ describe "when a visitor visits the root page" do
         date = DateTime.new(5-14-2010)
         Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
     visit '/'
-    click_on('Trips Index')
+    click_on('Trips')
 
     expect(page).to have_content("Trip details")
   end
@@ -26,9 +26,9 @@ describe "when a visitor visits the root page" do
         date = DateTime.new(5-14-2010)
         Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
     visit '/'
-    click_on('Stations Index')
+    click_on('Stations')
 
-    expect(page).to have_content("Bike Station Details")
+    expect(page).to have_content("Bike station details")
   end
 end
 
