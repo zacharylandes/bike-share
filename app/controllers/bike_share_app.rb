@@ -98,7 +98,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Condition.paginate(page: params[:page], per_page: 30)
+
     erb :"conditions/index"
   end
 
@@ -114,18 +115,18 @@ class BikeShareApp < Sinatra::Base
 
 
   get '/conditions/:id/edit' do
-    @station = Condition.find(params[:id])
+    @condition = Condition.find(params[:id])
     erb :"conditions/edit"
   end
 
 
   post '/conditions/new' do
-    station = Condition.create(params[:station])
+    condition = Condition.create(params[:condition])
     redirect '/conditions'
   end
 
   put '/conditions/:id' do |id|
-    Condition.update(id.to_i, params[:station])
+    Condition.update(id.to_i, params[:condition])
     redirect "/conditions/#{id}"
   end
 
