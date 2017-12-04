@@ -51,3 +51,13 @@ Ideas:
 Tools:
 
 Additional Notes:
+
+
+        <% @conditions.days_in_high_temperature_chunks.keys.each_with_index do |range,index|%>
+            <h4>Range</h4>
+            <p><%=range.pop%> </p>
+            <h5>Average</h5> <p><%=@conditions.temp_calcs.values[index]%></p>
+            <h5>Max</h5> <p><%=@conditions.max_temperature_f_per_temp.values[index]%></p>
+            <h5>Min</h5> <p><%=@conditions.min_temperature_f_per_temp.values[index]%></p>
+
+        <%end%>
