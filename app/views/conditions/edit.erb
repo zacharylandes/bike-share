@@ -1,21 +1,28 @@
 <h1>Edit your station</h1>
 
 
-<form action="/stations/<%= @station.id %>" method="post">
+<form action="/conditions/<%= @condition.id %>" method="post">
   <p>Edit</p>
   <input type="hidden" name="_method" value="PUT" />
 
-  <label for="station_name">Station Name</label>
-  <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
 
-  <label for="dock_count">Dock Count</label>
-  <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
+<label for="max_temperature_f">Max Temp</label>
+<input type='text' name='condition[max_temperature_f]' value="<%= @condition.max_temperature_f %>"></input>
 
-  <label for="city">City</label>
-  <input type='text' name='station[city]' value="<%= @station.city %>"/><br/>
+<label for="min_temperature_f">Mean Temp</label>
+<input type='text' name='condition[mean_temperature_f]' value="<%= @condition.mean_temperature_f %>"></input>
 
-  <label for="installation_date">Installation Date</label>
-  <input type='text' name='station[installation_date]' value="<%= @station.installation_date   %>"/><br/>
+<label for="mean_temperature_f">Min Temp</label>
+<input type='text' name='condition[min_temperature_f]' value="<%= @condition.mean_temperature_f %>"></input>
+
+<label for="mean_humidity">Mean Humidity</label>
+<input type='text' name='condition[mean_humidity]' value="<%= @condition.mean_humidity %>"></input>
+
+<label for="mean_visibility_miles">Mean Visibility</label>
+<input type='text' name='condition[mean_visibility_miles]' value="<%= @condition.mean_visibility_miles %>"></input>
+
+<label for="max_wind_Speed_mph">Max Wind speed</label>
+<input type='text' name='condition[mean_wind_speed_mph]' value="<%= @condition.mean_wind_speed_mph %>"></input>
 
   <input type='submit'/>
 </form>
