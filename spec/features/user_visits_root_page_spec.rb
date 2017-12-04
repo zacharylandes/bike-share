@@ -18,7 +18,6 @@ describe "when a visitor visits the root page" do
     visit '/'
     click_on('Trips Index')
 
-
     expect(page).to have_content("Trip details")
   end
 
@@ -28,7 +27,6 @@ describe "when a visitor visits the root page" do
         Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
     visit '/'
     click_on('Stations Index')
-
 
     expect(page).to have_content("Bike Station Details")
   end
