@@ -9,10 +9,10 @@ describe "When a user visits /stations/new" do
     fill_in "station[installation_date]", with: "8/6/2013"
     fill_in "station[city]", with: "London"
     
-    # click_on "Submit"
+    page.find("#btn_submit").click
 
-
-   
+    expect(current_path).to eq("/stations")
+    expect(page).to have_content("Paddington")
    
   end
 end
