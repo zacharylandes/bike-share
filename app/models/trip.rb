@@ -2,7 +2,6 @@ require 'pry'
 class Trip < ActiveRecord::Base
 
   belongs_to :station, foreign_key: "start_station_id", class_name: "Station"
-  # belongs_to :end_station, foreign_key: "end_station_id", class_name: "Station"
 
   validates_presence_of :duration,
                         :start_date,
@@ -35,22 +34,12 @@ class Trip < ActiveRecord::Base
     Station.find(params[:id])
   end
 
-  def self.number_of_rides_started_at_this_station(stations)
-    all_station_id = group(:start_station_id).order("count_id DESC").count(:id)
-    all_station_id.find do |trip_id, station_id|
-      if trip_id == stations
-        station_id
-      end
-    end
+  def self.number_of_rides_started_at_this_station(id)
+    where(start_station_id: id).count
   end
 
-  def self.number_of_rides_ended_at_this_station(stations)
-    all_station_id = group(:end_station_id).order("count_id DESC").count(:id)
-    all_station_id.find do |trip_id, station_id|
-      if trip_id == stations
-        station_id
-      end
-    end
+  def self.number_of_rides_ended_at_this_station(id)
+    where(end_station_id: id).count
   end
 
   def self.station_with_most_rides_at_end
