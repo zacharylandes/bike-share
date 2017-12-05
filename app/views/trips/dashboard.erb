@@ -55,8 +55,8 @@
       <p><strong>Shortest Ride: </strong><%= @trips.shortest_ride%></p>
       <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start.start_station_name%></p>
       <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end.end_station_name%></p>
-      <p> <strong>Most Ridden bike:</strong> bike with id <%=@trips.most_ridden_bike[0] %> which has <%=@trips.most_ridden_bike[1] %> trips</p>
-      <p> <strong> Least Ridden bike:</strong> bike with id <%=@trips.least_ridden_bike[0] %> which has <%=@trips.least_ridden_bike[1] %> trip </p>
+      <p> <strong>Most Ridden bike:</strong> bike with id <%=@trips.most_and_least_ridden_bikes.first[0] %> which has <%=@trips.most_and_least_ridden_bikes.first[1] %> trips</p>
+      <p> <strong> Least Ridden bike:</strong> bike with id <%=@trips.most_and_least_ridden_bikes.last[0] %> which has <%=@trips.most_and_least_ridden_bikes.last[1] %> trip </p>
       <p><strong>User profile Breakdown:</strong></p>
       <p><%@trips.subscription_type_breakout.to_a.map do |sub| %>
         <p>There are <%= sub[1]%> trips with a  profile of <%=sub [0]%></p>
@@ -75,13 +75,6 @@
           <%end%>
         </div>
       </div>
-
-      <p><span class="label label-info">Most ridden bike</span></p>
-      <p><span class="label label-info">Bike with ID <%=@trips.most_ridden_bike[0] %> which has <%=@trips.most_ridden_bike[1] %> trips </span></p>
-
-      <p><span class="label label-warning">Least ridden bike</span></p>
-      <p><span class="label label-warning">Bike with ID <%=@trips.least_ridden_bike[0] %> which has <%=@trips.least_ridden_bike[0] %> trips </span></p>
-
         <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">User profile breakdown</h3>

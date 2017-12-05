@@ -67,12 +67,8 @@ class Trip < ActiveRecord::Base
     where('extract(year from start_date)= ?', years).group('extract(year from start_date)').order("count_id DESC").count(:id)
   end
 
-  def self.most_ridden_bike
-    group(:bike_id).order("count_id DESC").count(:id).first
-  end
-
-  def self.least_ridden_bike
-    group(:bike_id).order("count_id ASC").count(:id).first
+  def self.most_and_least_ridden_bikes
+    group(:bike_id).order("count_id DESC").count(:id).to_a
   end
 
   def self.percentage_of_subscriber_type
