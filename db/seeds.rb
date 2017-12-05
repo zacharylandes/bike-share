@@ -7,6 +7,7 @@ require 'csv'
 stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :symbol
 stations.each do |row|
   Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
+  ActiveRecord::Base.connection.reset_pk_sequence!('stations')
 end
 
 

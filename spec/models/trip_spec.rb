@@ -149,22 +149,22 @@ RSpec.describe Trip do
 
       describe '.years' do
         it 'returns the years of the trips' do
-          date = DateTime.now
+          date = DateTime.new(12-04-17)
           # date1 = DateTime.new(5-14-2010)
 
           Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
           Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
-          Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
-          Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
+          Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: date)
+          Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: date)
 
-         expect(Trip.years).to eq([2017.0])
+         expect(Trip.years).to eq([-10.0])
         end
       end
 
   describe '.find_month_names' do
     it 'returns the names of the month' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
@@ -174,33 +174,33 @@ RSpec.describe Trip do
 
   describe '.trips_per_month' do
     it 'returns the trips per month' do
-      date = DateTime.now
-      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
-      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+      date = DateTime.new()
+      Trip.create!(duration: "5", start_date: "11/12/2017", start_station_id: 3  , start_station_name: "Train", end_date: "11/12/2017", end_station_id:3, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+      Trip.create!(duration: "5", start_date: "11/12/2017", start_station_id: 2  , start_station_name: "Train", end_date: "11/12/2017", end_station_id:3, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
-      Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
-      Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
-
-     expect(Trip.trips_per_month).to eq([{2017.0=>{"December"=>2}}])
+      Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "11/12/2017")
+      Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "11/12/2017")
+      # binding.pry
+     expect(Trip.trips_per_month_by_year(2017)).to eq({[2017.0, 12.0]=>2})
     end
   end
 
   describe '.sum_trips_per_year' do
     it 'sum of the trips per year' do
-      date = DateTime.now
-      Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
-      Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+      date = DateTime.new()
+      Trip.create!(duration: "5", start_date: "11/12/2017", start_station_id: 3  , start_station_name: "Train", end_date: "11/12/2017", end_station_id:3, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+      Trip.create!(duration: "5", start_date: "11/12/2017", start_station_id: 2  , start_station_name: "Train", end_date: "11/12/2017", end_station_id:3, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
-      Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
-      Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
-
-     expect(Trip.sum_trips_per_year).to eq([[2017.0, 2]])
+      Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "11/12/2017")
+      Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "11/12/2017")
+      # binding.pry
+     expect(Trip.sum_trips_per_year(2017)).to eq({2017.0=>2})
     end
   end
 
   describe '.most_ridden_bike' do
     it '.most ridden bike' do
-      date = DateTime.now
+      date = DateTime.new(11/12/2017)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
@@ -213,7 +213,7 @@ RSpec.describe Trip do
 
   describe '.least_ridden_bike' do
     it '.least ridden bike' do
-      date = DateTime.now
+      date = DateTime.new(11/12/2017)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
@@ -226,7 +226,7 @@ RSpec.describe Trip do
 
   describe '.percentage_of_subscriber_type' do
     it 'returns the percentage of each subscriver type' do
-      date = DateTime.now
+      date = DateTime.new(11/12/2017)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
@@ -239,7 +239,7 @@ RSpec.describe Trip do
 
   describe '.subscription_type_breakout' do
     it 'returns the breakdown of the subscriber types' do
-      date = DateTime.now
+      date = DateTime.new(11/12/2017)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
@@ -252,33 +252,33 @@ RSpec.describe Trip do
 
   describe '.date_with_most_trips' do
     it 'returns the date with the most trips' do
-      date = DateTime.now
+      date = DateTime.new(12/04/17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
       Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-     expect(Trip.date_with_most_trips).to eq(["12-05-17", 1])
+     expect(Trip.date_with_most_trips).to eq( ["01-01-00", 1])
     end
   end
 
   describe '.date_with_least_trips' do
     it 'returns the dates with least amount trips' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
 
       Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-     expect(Trip.date_with_least_trips).to eq( ["12-05-17", 1])
+     expect(Trip.date_with_least_trips).to eq( ["01-01-91", 1])
     end
   end
 
   describe '.most_frequent_destination' do
     it 'returns the most frequent desitination' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 2)
@@ -291,7 +291,7 @@ RSpec.describe Trip do
 
   describe '.most_frequent_origination' do
     it 'returns the most frequent origination' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219",end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219",end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 2)
@@ -299,26 +299,26 @@ RSpec.describe Trip do
       station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       station1 = Station.create!(id:2, name: "This station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-      expect(Trip.most_frequent_origination(station)).to eq( "This station")
+      expect(Trip.most_frequent_origination(station)).to eq( "That station")
     end
   end
 
   describe '.date_with_highest_number_of_trips_started_at_this_station' do
     it 'returns the date with the highest number of trips at that station' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219",end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219",end_station_id: 2)
 
       station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-      expect(Trip.date_with_highest_number_of_trips_started_at_this_station(station)).to eq("12/5/2017")
+      expect(Trip.date_with_highest_number_of_trips_started_at_this_station(station)).to eq("1/1/-10")
     end
   end
 
   describe '.most_frequent_zip_code_for_users_starting_trips_at_this_station' do
     it 'returns the most frequest zip code for that station' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80229", end_station_id: 2)
@@ -330,7 +330,7 @@ RSpec.describe Trip do
   end
   describe '.bike_id_most_frequently_starting_a_trip_at_this_station' do
     it 'returns the bike most frequently starting at that station' do
-      date = DateTime.now
+      date = DateTime.new(12-04-17)
       Trip.create!(duration: "5", start_date: date, start_station_id: 3  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", end_station_id: 3)
       Trip.create!(duration: "5", start_date: date, start_station_id: 2  , start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "40", subscription_type: "Subscriber", zip_code: "80229", end_station_id: 2)
