@@ -259,7 +259,7 @@ RSpec.describe Trip do
       Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-     expect(Trip.date_with_most_trips).to eq(["12-04-17", 1])
+     expect(Trip.date_with_most_trips).to eq(["12-05-17", 1])
     end
   end
 
@@ -272,7 +272,7 @@ RSpec.describe Trip do
       Station.create(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       Station.create(id:2, name: "Another station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-     expect(Trip.date_with_least_trips).to eq( ["12-04-17", 1])
+     expect(Trip.date_with_least_trips).to eq( ["12-05-17", 1])
     end
   end
 
@@ -312,7 +312,7 @@ RSpec.describe Trip do
 
       station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-      expect(Trip.date_with_highest_number_of_trips_started_at_this_station(station)).to eq("12/4/2017")
+      expect(Trip.date_with_highest_number_of_trips_started_at_this_station(station)).to eq("12/5/2017")
     end
   end
 
