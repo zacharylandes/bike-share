@@ -64,13 +64,17 @@ class Trip < ActiveRecord::Base
     end
   end
 
-  def self.sum_trips_per_year
-    result = years.map do |year|
-    found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
-    end
-    result = result.map {|result| result.values.sum}
-    years.zip(result)
+  def self.sum_trips_per_year(years)
+    where('extract(year from start_date)= ?', years).group('extract(year from start_date)').order("count_id DESC").count(:id)
   end
+
+  # def self.sum_trips_per_year
+  #   result = years.map do |year|
+  #     found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+  #   end
+  #   result = result.map {|result| result.values.sum}
+  #   years.zip(result)
+  # end
 
   def self.most_ridden_bike
     group(:bike_id).order("count_id DESC").count(:id).first
