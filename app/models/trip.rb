@@ -1,8 +1,8 @@
+
 require 'pry'
 class Trip < ActiveRecord::Base
 
   belongs_to :station, foreign_key: "start_station_id", class_name: "Station"
-  # belongs_to :end_station, foreign_key: "end_station_id", class_name: "Station"
 
   validates_presence_of :duration,
                         :start_date,
@@ -35,22 +35,12 @@ class Trip < ActiveRecord::Base
     Station.find(params[:id])
   end
 
-  def self.number_of_rides_started_at_this_station(stations)
-    all_station_id = group(:start_station_id).order("count_id DESC").count(:id)
-    all_station_id.find do |trip_id, station_id|
-      if trip_id == stations
-        station_id
-      end
-    end
+  def self.number_of_rides_started_at_this_station(id)
+    where(start_station_id: id).count
   end
 
-  def self.number_of_rides_ended_at_this_station(stations)
-    all_station_id = group(:end_station_id).order("count_id DESC").count(:id)
-    all_station_id.find do |trip_id, station_id|
-      if trip_id == stations
-        station_id
-      end
-    end
+  def self.number_of_rides_ended_at_this_station(id)
+    where(end_station_id: id).count
   end
 
   def self.station_with_most_rides_at_end
@@ -66,21 +56,21 @@ class Trip < ActiveRecord::Base
     Date::MONTHNAMES[month]
   end
 
-  def self.trips_per_month
-    years.map do |year|
-      found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
-      months = Hash[found.map{|month,count|[month.to_i,count]}]
-      month_names = Hash[months.map{|month,count|[find_month_names(month),count]}]
-      {year => month_names }
-    end
+  def self.trips_per_month_by_year(years)
+    where('extract(year from start_date)= ?', years).group('extract(year from start_date)').group('extract(month from start_date)').order("count_id DESC").count(:id)
   end
 
-  def self.sum_trips_per_year
-    result = years.map do |year|
-    found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
-    end
-    result = result.map {|result| result.values.sum}
-    years.zip(result)
+  # def self.trips_per_month
+  #   years.map do |year|
+  #     found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+  #     months = Hash[found.map{|month,count|[month.to_i,count]}]
+  #     month_names = Hash[months.map{|month,count|[find_month_names(month),count]}]
+  #     {year => month_names }
+  #   end
+  # end
+
+  def self.sum_trips_per_year(years)
+    where('extract(year from start_date)= ?', years).group('extract(year from start_date)').order("count_id DESC").count(:id)
   end
 
   def self.most_ridden_bike
@@ -135,8 +125,8 @@ class Trip < ActiveRecord::Base
   end
 
   def self.date_with_highest_number_of_trips_started_at_this_station(station)
-    date = where(start_station_id: station).group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
-    "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}"
+    date = where(start_station_id: station).group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first.first
+    date.join("/")
   end
 
   def self.most_frequent_zip_code_for_users_starting_trips_at_this_station(station)

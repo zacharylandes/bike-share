@@ -12,8 +12,8 @@ end
 
 trips = CSV.open './db/csv/trip_fixtures.csv', headers:true, header_converters: :symbol
 trips.each do |row|
-  start_date = DateTime.strptime(row[:start_date], '%m/%d/%Y %k:%M')
-  end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y %k:%M')
+  start_date = DateTime.strptime(row[:start_date],'%m/%d/%Y' )
+  end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y')
 
   Trip.create!(
       duration: row[:duration],
