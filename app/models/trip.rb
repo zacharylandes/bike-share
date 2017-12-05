@@ -3,7 +3,7 @@ require 'pry'
 class Trip < ActiveRecord::Base
 
   belongs_to :station, foreign_key: "start_station_id", class_name: "Station"
-
+  #
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,

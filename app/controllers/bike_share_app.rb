@@ -20,7 +20,7 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/new"
   end
 
-  post '/trips/new' do
+  post '/trips' do
     trip = Trip.create(params[:trip])
     redirect '/trips'
   end
@@ -48,7 +48,6 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @trips = Trip.all
-    @station =
     # binding.pry
     erb :"trips/dashboard"
   end

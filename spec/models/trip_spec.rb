@@ -299,7 +299,7 @@ RSpec.describe Trip do
       station = Station.create!(id:3, name: "That station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
       station1 = Station.create!(id:2, name: "This station", dock_count: 2, city: "Los Angeles", installation_date: "02-03-1204")
 
-      expect(Trip.most_frequent_origination(station)).to eq( "That station")
+      expect(Trip.most_frequent_origination(station)).to eq( "This station")
     end
   end
 

@@ -16,7 +16,7 @@
         </ol>
 
         <h1>Make a new trip</h1>
-        <form action="/trips/new" method="post">
+        <form action="/trips" method="post">
           <p>Enter details for your new trip below</p>
 
           <label for="duration">Duration</label>
@@ -40,8 +40,6 @@
           <label for="subscription_type">Subscription</label>
           <input type='text' class="form-control" name='trip[subscription_type]' placeholder="e.g. Subscriber"/><br/>
 
-          <label for="zip_code">Zip Code</label>
-          <input type='number' class="form-control"  name='trip[zip_code]' placeholder="e.g. 95112"/><br/>
 
           <div class="sumbit_button" align="center">
             <input id = "btn_submit" class="btn btn-success" type='submit'/>

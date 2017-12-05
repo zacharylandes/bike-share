@@ -15,6 +15,18 @@ describe "when a visitor visits the root" do
     expect(page).to have_content("Welcome to Bike Share")
   end
 
+  it "should receive a status code in the 200s" do
+    visit '/'
+
+    page.status_code.should == 200
+  end
+
+  it "should receive an error code for a non exisiting route" do
+    visit '/poopoo'
+
+    page.status_code.should == 404
+  end
+
   it "sees the stations index page after clicking the correct link" do
     visit '/'
     click_link('Stations')
@@ -51,26 +63,21 @@ describe "when a visitor visits the root" do
   end
 
   it "sees the trip dashboard page after clicking the correct link" do
-      # date = DateTime.new(31/12/05)
-      # Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1, end_station_id: 1)
-      # Station.create(id: 1,name: "The station", dock_count: 23, city: "San Francisco", installation_date: "04-03-1204")
-
     visit '/'
-    # binding.pry
     click_on('Trips dashboard')
 
     expect(current_path).to eq("/trips-dashboard")
     expect(page).to have_content("Trips Dashboard")
   end
 
-    it "sees the station dashboard page after clicking the correct link" do
-      visit '/'
+  it "sees the station dashboard page after clicking the correct link" do
+    visit '/'
 
-      click_on('Weather dashboard')
+    click_on('Weather dashboard')
 
-      expect(current_path).to eq("/weather-dashboard")
-      expect(page).to have_content("Weather dashboard")
-    end
+    expect(current_path).to eq("/weather-dashboard")
+    expect(page).to have_content("Weather dashboard")
+  end
 
 
 end
