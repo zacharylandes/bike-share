@@ -71,16 +71,28 @@ class Trip < ActiveRecord::Base
     group(:bike_id).order("count_id DESC").count(:id).to_a
   end
 
-  def self.percentage_of_subscriber_type
-    amount = subscription_type_breakout.values
-    total = amount.sum
-    amount.map do |num|
-      ((num/total.to_f)*100).round(1)
-    end
-  end
+  # def self.percentage_of_subscriber_type
+  #   amount = subscription_type_breakout.values
+  #   total = amount.sum
+  #   amount.map do |num|
+  #     ((num/total.to_f)*100).round(1)
+  #   end
+  # end
 
   def self.subscription_type_breakout
-     group(:subscription_type).order("count_id DESC").count(:id)
+    group(:subscription_type).order("count_id DESC").count(:id).to_a
+  end
+
+  def self.subscription_type_amounts
+    subscription_type_breakout.map do |subscription|
+      subscription[1]
+    end.sum
+  end
+
+  def self.percentage_of_subscriber_type
+    subscription_type_breakout.map do |subscription|
+      ((subscription[1] / subscription_type_amounts.to_f) * 100).round(1)
+    end
   end
 
   def self.date_with_most_trips
