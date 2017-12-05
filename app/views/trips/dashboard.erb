@@ -39,12 +39,6 @@
       <p><span class="label label-danger">Shortest ride</span></p>
       <p><span class="label label-danger"><%= @trips.shortest_ride %></span></p>
 
-      <p><span class="label label-warning">Station with most rides at start</span></p>
-      <p><span class="label label-warning"><%= @trips.station_with_most_rides_at_start%></span></p>
-
-      <p><span class="label label-default">Station with most rides at end</span></p>
-      <p><span class="label label-default"><%= @trips.station_with_most_rides_at_end%></span></p>
-
       <div class="panel panel-success">
         <div class="panel-heading">
           <h3 class="panel-title">Monthly trip breakdown for each year</h3>
@@ -59,9 +53,8 @@
       <p><strong>Average Trip Length: </strong><%= @trips.average_trip_length %></p>
       <p><strong>Longest Ride: </strong><%= @trips.longest_ride%></p>
       <p><strong>Shortest Ride: </strong><%= @trips.shortest_ride%></p>
-      <p><strong>Station with most rides at start: </strong><%= @trips.shortest_ride%></p>
-      <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start%></p>
-      <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end%></p>
+      <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start.start_station_name%></p>
+      <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end.end_station_name%></p>
       <p> <strong>Most Ridden bike:</strong> bike with id <%=@trips.most_ridden_bike[0] %> which has <%=@trips.most_ridden_bike[1] %> trips</p>
       <p> <strong> Least Ridden bike:</strong> bike with id <%=@trips.least_ridden_bike[0] %> which has <%=@trips.least_ridden_bike[1] %> trip </p>
       <p><strong>User profile Breakdown:</strong></p>
