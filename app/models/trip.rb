@@ -55,26 +55,22 @@ class Trip < ActiveRecord::Base
     Date::MONTHNAMES[month]
   end
 
-  def self.trips_per_month
-    years.map do |year|
-      found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
-      months = Hash[found.map{|month,count|[month.to_i,count]}]
-      month_names = Hash[months.map{|month,count|[find_month_names(month),count]}]
-      {year => month_names }
-    end
+  def self.trips_per_month_by_year(years)
+    where('extract(year from start_date)= ?', years).group('extract(year from start_date)').group('extract(month from start_date)').order("count_id DESC").count(:id)
   end
+
+  # def self.trips_per_month
+  #   years.map do |year|
+  #     found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
+  #     months = Hash[found.map{|month,count|[month.to_i,count]}]
+  #     month_names = Hash[months.map{|month,count|[find_month_names(month),count]}]
+  #     {year => month_names }
+  #   end
+  # end
 
   def self.sum_trips_per_year(years)
     where('extract(year from start_date)= ?', years).group('extract(year from start_date)').order("count_id DESC").count(:id)
   end
-
-  # def self.sum_trips_per_year
-  #   result = years.map do |year|
-  #     found = where('extract(year from start_date)= ?', year).group('extract(month from start_date)').order("count_id DESC").count(:id)
-  #   end
-  #   result = result.map {|result| result.values.sum}
-  #   years.zip(result)
-  # end
 
   def self.most_ridden_bike
     group(:bike_id).order("count_id DESC").count(:id).first

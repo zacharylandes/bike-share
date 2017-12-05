@@ -50,8 +50,8 @@
           <h3 class="panel-title">Monthly trip breakdown for each year</h3>
         </div>
         <div class="panel-body">
-          <%@trips.trips_per_month.each do |trip|%>
-            <p><%= trip.to_json.delete "{}"%></p>
+          <%@trips.trips_per_month_by_year(@trips.years).each_pair do |k, v|%>
+            <p><strong><%= k[0].to_i %></strong> : <%= Date::MONTHNAMES[k[1]] %> : <%= v %> rides </p>
           <%end%>
         </div>
       </div>
