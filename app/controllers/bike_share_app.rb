@@ -75,7 +75,7 @@ class BikeShareApp < Sinatra::Base
   end
 
 
-  post '/stations/new' do
+  post '/stations' do
     station = Station.create(params[:station])
     redirect '/stations'
   end
@@ -142,7 +142,7 @@ class BikeShareApp < Sinatra::Base
     redirect '/conditions'
   end
 
-  get '/weather-dashboard' do 
+  get '/weather-dashboard' do
 
     erb :"conditions/dashboard"
   end

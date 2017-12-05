@@ -8,9 +8,7 @@
   <div class="container">
     <div class="row">
         <div class="col-xs-4 col-md-12">
-
          <h1>Weather dashboard will go here  </h1>
-
         </div>
     </div>
   </div>
@@ -20,10 +18,45 @@
   <div class="row">
       <div class="col-xs-4 col-md-12">
 
-      
+        <h3>For temperatures </h3>
+      <% (40..80).step(10) do |n| %>
+        <p> <%= "#{n} to #{n + 10}" %>-</p>
+        <p>Average Number of rides in this range: <%= Condition.average_number_of_rides_from_temp(n) %></p>
+        <p> Highest number of rides in this range: <%= Condition.highest_number_of_rides_from_temp(n) %></p>
+        <p>Lowest number of rides in this range: <%= Condition.lowest_number_of_rides_from_temp(n) %></p>
+      <% end %>
       </div>
   </div>
 </div>
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-4 col-md-12">
+        <h3>For precipitation ranges </h3>
+      <% (0..2).step(0.5) do |n| %>
+        <p> <%= "#{n} to #{n + 0.5 }" %>-</p>
+        <p>Average Number of rides with this precipitation: <%= Condition.average_number_of_rides_from_prec(n) %></p>
+        <p>Highest number of rides with this precipitation: <%= Condition.highest_number_of_rides_from_prec(n) %></p>
+        <p>Lowest number of rides with this precipitation: <%= Condition.lowest_number_of_rides_from_prec(n) %></p>
+      <% end %>
+      </div>
+  </div>
+</div>
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-4 col-md-12">
+        <h3>For precipitation ranges </h3>
+      <% (0..2).step(0.5) do |n| %>
+        <p> <%= "#{n} to #{n + 0.5 }" %>-</p>
+        <p>Average Number of rides with this precipitation: <%= Condition.average_number_of_rides_from_prec(n) %></p>
+        <p>Highest number of rides with this precipitation: <%= Condition.highest_number_of_rides_from_prec(n) %></p>
+        <p>Lowest number of rides with this precipitation: <%= Condition.lowest_number_of_rides_from_prec(n) %></p>
+      <% end %>
+      </div>
+  </div>
+</div>
+
 
 
 

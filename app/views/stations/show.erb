@@ -16,7 +16,7 @@
           </ol>
 
 
-          
+
           <h1><%= @station.name %></h1>
 
           <table class="table table-striped">
@@ -38,16 +38,16 @@
 
 
 
-         
+
 
         </div>
-      </div>  
+      </div>
     </div>
 
 <p><strong>Number of rides started at this station:</strong></p>
-<p><%= @trips.number_of_rides_started_at_this_station(@station.id)[-1] %></p>
+<p><%= @trips.number_of_rides_started_at_this_station(@station.id) %></p>
 <p><strong>Number of rides ended at this station:</strong></p>
-<p><%= @trips.number_of_rides_ended_at_this_station(@station.id)[-1] %></p>
+<p><%= @trips.number_of_rides_ended_at_this_station(@station.id) %></p>
 <p><strong>Most frequent destination station:</strong></p>
 <p><%= @trips.most_frequent_destination(@station.id) %></p>
 <p><strong>Most frequent origination station:</strong></p>

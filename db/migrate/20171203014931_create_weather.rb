@@ -1,7 +1,7 @@
 class CreateWeather < ActiveRecord::Migration[5.1]
   def change
     create_table "conditions", force: :cascade do |t|
-      t.date "date"
+      t.datetime "date"
       t.float "max_temperature_f"
       t.float "mean_temperature_f"
       t.float "min_temperature_f"
