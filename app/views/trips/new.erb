@@ -20,28 +20,28 @@
           <p>Enter details for your new trip below</p>
 
           <label for="duration">Duration</label>
-          <input type='text'class="form-control" name='trip[duration]' placeholder="e.g. 77"/><br/>
+          <input type='number'class="form-control" name='trip[duration]' placeholder="e.g. 77"/><br/>
 
           <label for="start_date">Start Date</label>
-          <input type='text' class="form-control" name='trip[start_date]' placeholder="e.g. 2013-08-29 "/><br/>
+          <input type='date' class="form-control" name='trip[start_date]' placeholder="e.g. 2013-08-29 "/><br/>
 
           <label for="start_station_name">Start Station Name</label>
           <input type='text' class="form-control" name='trip[start_station_name]' placeholder="e.g. Golden Gate at Polk"/><br/>
 
           <label for="end_date">End Date</label>
-          <input type='text'class="form-control" name='trip[end_date]' placeholder="e.g. 2013-08-29"/><br/>
+          <input type='date'class="form-control" name='trip[end_date]' placeholder="e.g. 2013-08-29"/><br/>
 
           <label for="end_station_name">End Station</label>
           <input type='text' class="form-control" name='trip[end_station_name]' placeholder="e.g. Adobe on Almaden"/><br/>
 
           <label for="bike_id">Bike ID</label>
-          <input type='text' class="form-control" name='trip[bike_id]' placeholder="e.g. 679"/><br/>
+          <input type='number' class="form-control" name='trip[bike_id]' placeholder="e.g. 679"/><br/>
 
           <label for="subscription_type">Subscription</label>
           <input type='text' class="form-control" name='trip[subscription_type]' placeholder="e.g. Subscriber"/><br/>
 
           <label for="zip_code">Zip Code</label>
-          <input type='text' class="form-control"  name='trip[zip_code]' placeholder="e.g. 95112"/><br/>
+          <input type='number' class="form-control"  name='trip[zip_code]' placeholder="e.g. 95112"/><br/>
 
           <div class="sumbit_button" align="center">
             <input id = "btn_submit" class="btn btn-success" type='submit'/>
@@ -50,7 +50,7 @@
         </form>
 
       </div>
-    </div>  
+    </div>
   </div>
 
 
