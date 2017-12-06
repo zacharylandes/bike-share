@@ -127,9 +127,12 @@
           <h3 class="panel-title">Total rides per year</h3>
         </div>
         <div class="panel-body">
-          <% @trips.sum_trips_per_year(@trips.years).each_pair do |k, v|%>
+               <%(0..@trips.years.length).each do |index| %>
+          <% @trips.sum_trips_per_year(@trips.years[index]).each_pair do |k, v|%>
             <p>  <strong><%= k.to_i %></strong>:   <%= v %> rides</p>
           <%end%>
+          <%end%>
+          
         </div>
       </div>
 
