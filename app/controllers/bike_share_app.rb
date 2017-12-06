@@ -86,8 +86,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    @trips = Trip.all
-    # binding.pry
+    @trips = Trip.where(start_station_id: @station.id)
     erb :"stations/show"
   end
 

@@ -14,8 +14,6 @@ describe "When a user visits /trips/new" do
     fill_in "trip[subscription_type]", with: "Subscriber"
 
     page.find("#btn_submit").click
-    # binding.pry
-    save_and_open_page
 
     expect(page).to have_content("Adobe on Almaden")
     expect(current_path).to eq("/trips")
