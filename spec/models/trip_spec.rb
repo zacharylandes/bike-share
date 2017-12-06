@@ -322,48 +322,19 @@ RSpec.describe Trip do
 
 
 
-    describe "validations" do
-      it "is invalid without a duration" do
-        trip = Trip.create(start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+ 
+    
+     
 
-        expect(trip).to be_invalid
-      end
+     
 
-      it "is invalid without a start date" do
-        trip = Trip.create(duration: "5", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+     
 
-        expect(trip).to be_invalid
-      end
+      
 
-      it "is invalid without a start station name" do
-        trip = Trip.create(duration: "5", start_date: "05-14-2010", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
+   
 
-        expect(trip).to be_invalid
-      end
-
-      it "is invalid without an end date" do
-        trip = Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
-
-        expect(trip).to be_invalid
-      end
-
-      it "is invalid without an end station name" do
-        trip = Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219")
-
-        expect(trip).to be_invalid
-      end
-
-      it "is invalid without a bike id" do
-        trip = Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", subscription_type: "Subscriber", zip_code: "80219")
-
-        expect(trip).to be_invalid
-      end
-
-      it "is invalid without a subscription type" do
-        trip = Trip.create(duration: "5", start_date: "05-14-2010", start_station_name: "Train", end_date: "50-54-2010", end_station_name: "California", bike_id: "540", zip_code: "80219")
-
-        expect(trip).to be_invalid
-      end
-    end
+     
+    
   end
 end

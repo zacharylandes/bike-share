@@ -9,7 +9,7 @@ describe "when a visitor visits the conditions index" do
   
   it "can click the link to create a new condition" do
     visit '/conditions'
-    click_link('Create a new condition')
+    click_link('Create new condition')
 
     expect(page).to have_current_path("/conditions/new")
     expect(page).to have_content("Make new condition")
