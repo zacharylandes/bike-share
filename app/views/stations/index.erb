@@ -31,39 +31,35 @@
   <div class="row">
       <div class="col-xs-12">
 
-      
 
-      <% @stations.each do |station| %>
-        <ul class = "list-group">
-          <li class = "list-group-item">
-            <a href ="/stations/<%= station.id %>" ><h3><%= station.name %></h3></a>
-            <p> Dock Count: <strong><%= station.dock_count %></strong> </p>
-            <p> City: <strong><%= station.city %></strong></p>
-            <p> Installation Date: <strong><%= station.installation_date %></strong> </p>
-
-            <p><a class="btn btn-warning" href='/stations/<%= station.id  %>/edit'>Edit</a></p>
-
-            <form action="/stations/<%= station.id %>" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <input class = "btn btn-danger"type="submit" value="Delete"/>
-            </form>
-
-          </li>
-        </ul>
-
-      <% end %>
-
-
- 
-
-
-
-
-  
-<%# 
-      <ul class = "list-group">
-        <li class = "list-group-item"><a href="/stations/new"> Create a new station</a></li>
-      </ul> %>
+          <table class="table table-striped ">
+            <thead >
+              <tr>
+                <th>Station name</th>
+                <th>Dock count</th>
+                <th>City</th>
+                <th>Installation date</th>
+              </tr>
+            </thead>
+            <tbody>   
+              <% @stations.each do |station| %>   
+                <tr>
+                  <th scope="row"><a href ="/stations/<%= station.id %>" ><%= station.name %></a></th>
+                  <td><%= station.dock_count %></td>
+                  <td><%= station.city %></td>
+                  <td><%= station.installation_date %></td>
+                  <td><a class="btn btn-warning" href='/stations/<%= station.id  %>/edit'>Edit</a></td>
+                  <td>  
+                    <form action="/stations/<%= station.id %>" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <input class = "btn btn-danger"type="submit" value="Delete"/>
+                    </form>
+                  </td>
+                </tr>
+              <% end %>
+             
+            </tbody>
+          </table>
 
       </div>
   </div>
