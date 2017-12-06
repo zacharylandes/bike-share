@@ -36,27 +36,60 @@
             </tbody>
           </table>
 
+          <% if @trips.count > 0%>
+            <div class="panel panel-default">
+              <div class="panel-heading">Number of rides started at this station</div>
+              <div class="panel-body">
+                <%= @trips.number_of_rides_started_at_this_station(@station.id) %>
+              </div>
+            </div>
 
+            <div class="panel panel-default">
+              <div class="panel-heading">Number of rides ended at this station</div>
+              <div class="panel-body">
+                <%= @trips.number_of_rides_ended_at_this_station(@station.id) %>
+              </div>
+            </div>
 
+            <div class="panel panel-default">
+              <div class="panel-heading">Most frequent destination station</div>
+              <div class="panel-body">
+                <%= @trips.most_frequent_destination(@station.id) %>
+              </div>
+            </div>
 
+            <div class="panel panel-default">
+              <div class="panel-heading">Most frequent origination station</div>
+              <div class="panel-body">
+               <%= @trips.most_frequent_origination(@station.id) %>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Date with highest number of trips</div>
+              <div class="panel-body">
+               <%= @trips.date_with_highest_number_of_trips_started_at_this_station(@station.id) %>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Most frequent zip code for users starting trips</div>
+              <div class="panel-body">
+               <%= @trips.most_frequent_zip_code_for_users_starting_trips_at_this_station(@station.id) %>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Bike most frequently used when starting a trip</div>
+              <div class="panel-body">
+               <%= @trips.bike_id_most_frequently_starting_a_trip_at_this_station(@station.id) %>
+              </div>
+            </div>
+
+          <%end%>
 
         </div>
       </div>
     </div>
 
-<p><strong>Number of rides started at this station:</strong></p>
-<% if @trips.count > 0%>
-  <p><%= @trips.number_of_rides_started_at_this_station(@station.id) %></p>
-  <p><strong>Number of rides ended at this station:</strong></p>
-  <p><%= @trips.number_of_rides_ended_at_this_station(@station.id) %></p>
-  <p><strong>Most frequent destination station:</strong></p>
-  <p><%= @trips.most_frequent_destination(@station.id) %></p>
-  <p><strong>Most frequent origination station:</strong></p>
-  <p><%= @trips.most_frequent_origination(@station.id) %></p>
-  <p><strong>Date with highest number of trips:</strong></p>
-  <p><%= @trips.date_with_highest_number_of_trips_started_at_this_station(@station.id) %></p>
-  <p><strong>Most frequent zip code for users starting trips:</strong></p>
-  <p><%= @trips.most_frequent_zip_code_for_users_starting_trips_at_this_station(@station.id) %></p>
-  <p><strong>Bike most frequently used when starting a trip:</strong></p>
-  <p><%= @trips.bike_id_most_frequently_starting_a_trip_at_this_station(@station.id) %></p>
-<%end%>
+
