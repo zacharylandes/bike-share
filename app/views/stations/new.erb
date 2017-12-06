@@ -19,8 +19,13 @@
           <form action="/stations" method="post">
             <p>Enter details for your new station below</p>
 
-            <label for="name" >Name</label>
-            <input type='text' class="form-control" name='station[name]' placeholder="e.g. St James Park" required/><br/>
+
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="name" >Name</label>
+                <input type='text' class="form-control" name='station[name]' placeholder="e.g. St James Park" required/><br/>
+              </div>
+            </div>
 
             <label for="city">City</label>
             <input type='text' class="form-control" name='station[city]' placeholder="e.g. San Jose" required/><br/>

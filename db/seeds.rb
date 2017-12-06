@@ -11,7 +11,7 @@ stations.each do |row|
 end
 
 
-trips = CSV.open './db/csv/trip_fixtures.csv', headers:true, header_converters: :symbol
+trips = CSV.open './db/csv/trips.csv', headers:true, header_converters: :symbol
 trips.each do |row|
   start_date = DateTime.strptime(row[:start_date],'%m/%d/%Y' )
   end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y')

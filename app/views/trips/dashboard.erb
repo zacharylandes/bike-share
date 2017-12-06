@@ -62,8 +62,10 @@
           <h3 class="panel-title">Monthly trip breakdown for each year</h3>
         </div>
         <div class="panel-body">
-          <%@trips.trips_per_month_by_year(@trips.years).each_pair do |k, v|%>
+        <%(0..@trips.years.length).each do |index| %>
+          <%@trips.trips_per_month_by_year(@trips.years[index]).each_pair do |k, v|%>
             <p><strong><%= k[0].to_i %></strong> : <%= Date::MONTHNAMES[k[1]] %> : <%= v %> rides </p>
+          <%end%>
           <%end%>
         </div>
       </div>
