@@ -32,35 +32,53 @@
   <div class="row">
       <div class="col-xs-12">
 
-         <% @trips.each do |trip| %>
-          <ul class = "list-group">
-            <li class = "list-group-item">
-              <p> Duration: <strong><%=  trip.duration %></strong> </p>
-              <p> Start date: <strong><%= trip.start_date %></strong> </p>
-              <p> Start station: <strong><%= trip.start_station_name %></strong> </p>
-              <p> End date: <strong><%= trip.end_date %></strong> </p>
-              <p> End station: <strong><%= trip.end_station_name %></strong> </p>
-              <p> Bike id: <strong><%= trip.bike_id %></strong> </p>
-              <p> Subscription type: <strong><%= trip.subscription_type %></strong> </p>
-              <p> Zip Code: <strong><%= trip.zip_code %></strong> </p>
 
-              <p><a class="btn btn-warning" href='/trips/<%= trip.id  %>/edit'>Edit</a></p>
-              <p><a class="btn btn-info" href='/trips/<%= trip.id  %>'>View</a></p>
+          <table class="table table-striped ">
+            <thead >
+              <tr>
+                <th>Duration</th>
+                <th>Start date</th>
+                <th>Start station</th>
+                <th>End date</th>
+                <th>End station</th>
+                <th>Bike id</th>
+                <th>Subscription type</th>
+                <th>Zip code</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            
+              <% @trips.each do |trip| %>
+                <tr>
+                  <th scope="row"><%=trip.duration %></th>
+                  <td><%= trip.start_date %></td>
+                  <td><%= trip.start_station_name %></td>
+                  <td><%= trip.end_date %></td>
+                  <td><%= trip.end_station_name %></td>
+                  <td><%= trip.bike_id %></td>
+                  <td><%= trip.subscription_type %></td>
+                  <td><%= trip.zip_code %></td>
+                  <td><a class="btn btn-warning" href='/trips/<%= trip.id  %>/edit'>Edit</a></td>
+                  <td><a class="btn btn-info" href='/trips/<%= trip.id  %>'>View</a></td>
+                  <td>
+                    <form action="/trips/<%= trip.id %>" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <input class = "btn btn-danger"type="submit" value="Delete"/>
+                    </form>
+                  </td>
+                </tr>
+              <% end %>
+             
+            </tbody>
+          </table>
 
-
-              <form action="/trips/<%= trip.id %>" method="POST">
-                <input type="hidden" name="_method" value="DELETE">
-                <input class = "btn btn-danger"type="submit" value="Delete"/>
-              </form>
-            </li>
-          </ul>
-
-         <% end %>
 
         <%= will_paginate @trips, :page_links => false %>
 
-      
-
+    
 
 
 

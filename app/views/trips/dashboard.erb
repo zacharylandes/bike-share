@@ -9,17 +9,16 @@
     <div class="row">
         <div class="col-xs-12">
 
-        <h1>Trips Dashboard</h1>
+
         <ol class="breadcrumb">
               <li><a href="/">Home</a></li>
               <li><a href="/trips">Trips</a></li>
               <li class="active">Trips Dashboard</li>
         </ol>
+        <h1>Trips Dashboard</h1>
+        <p>Explore data analytics for trips in your area</p>
 
-        <div class = "welcome">
-          <h1>Trips Dashboard</h1>
-          <p>Explore data analytics for trips in your area</p>
-        </div>
+
 
         </div>
     </div>
@@ -29,52 +28,114 @@
     <div class="row">
       <div class="col-xs-12">
 
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Average trip length</h3>
+        </div>
+        <div class="panel-body">
+            <p><%= @trips.average_trip_length %></p>
+        </div>
+      </div>
 
-      <p><span class="label label-info">Average trip length</span></p>
-      <p><span class="label label-info"><%= @trips.average_trip_length %></span></p>
 
-      <p><span class="label label-success">Longest ride</span></p>
-      <p><span class="label label-success"><%= @trips.longest_ride%></span></p>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Longest ride</h3>
+        </div>
+        <div class="panel-body">
+            <p><%= @trips.longest_ride%></p>
+        </div>
+      </div>
 
-      <p><span class="label label-danger">Shortest ride</span></p>
-      <p><span class="label label-danger"><%= @trips.shortest_ride %></span></p>
 
       <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Shortest ride</h3>
+        </div>
+        <div class="panel-body">
+            <p><%= @trips.shortest_ride %></p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Monthly trip breakdown for each year</h3>
         </div>
         <div class="panel-body">
-          <%@trips.trips_per_month_by_year(@trips.years).each_pair do |k, v|%>
+        <%(0..@trips.years.length).each do |index| %>
+          <%@trips.trips_per_month_by_year(@trips.years[index]).each_pair do |k, v|%>
             <p><strong><%= k[0].to_i %></strong> : <%= Date::MONTHNAMES[k[1]] %> : <%= v %> rides </p>
+          <%end%>
           <%end%>
         </div>
       </div>
 
-      <p><strong>Average Trip Length: </strong><%= @trips.average_trip_length %></p>
-      <p><strong>Longest Ride: </strong><%= @trips.longest_ride%></p>
-      <p><strong>Shortest Ride: </strong><%= @trips.shortest_ride%></p>
-      <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start.start_station_name%></p>
-      <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end.end_station_name%></p>
-      <p> <strong>Most Ridden bike:</strong> bike with id <%=@trips.most_and_least_ridden_bikes.first[0] %> which has <%=@trips.most_and_least_ridden_bikes.first[1] %> trips</p>
-      <p> <strong> Least Ridden bike:</strong> bike with id <%=@trips.most_and_least_ridden_bikes.last[0] %> which has <%=@trips.most_and_least_ridden_bikes.last[1] %> trip </p>
-      <p><strong>User profile Breakdown:</strong></p>
-      <p><%@trips.subscription_type_breakout.each do |sub| %>
-        <p>There are <%= sub[1]%> trips with a profile of <%=sub[0]%></p>
-       <%end%>
-      <p><strong>Customers: </strong><%=@trips.percentage_of_subscriber_type[0]%>% of the total user profiles</p>
-      <p><strong>Subscribers: </strong><%=@trips.percentage_of_subscriber_type[1]%>% of the total user profiles</p>
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Station with most rides at start</h3>
+        </div>
+        <div class="panel-body">
+            <p><%= @trips.station_with_most_rides_at_start.start_station_name%></p>
+        </div>
+      </div>
 
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Station with most rides at end</h3>
+        </div>
+        <div class="panel-body">
+            <p><%= @trips.station_with_most_rides_at_end.end_station_name%></p>
+        </div>
+      </div>
+
+       <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Most Ridden bike</h3>
+        </div>
+        <div class="panel-body">
+             <p> Bike with id <%=@trips.most_and_least_ridden_bikes.first[0] %> which has <%=@trips.most_and_least_ridden_bikes.first[1] %> trips</p>
+        </div>
+      </div>
 
       <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Least Ridden bike</h3>
+        </div>
+        <div class="panel-body">
+             <p>Bike with id <%=@trips.most_and_least_ridden_bikes.last[0] %> which has <%=@trips.most_and_least_ridden_bikes.last[1] %> trip </p>
+        </div>
+      </div>
+
+       <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">User profile breakdown</h3>
+        </div>
+        <div class="panel-body">
+          <%@trips.subscription_type_breakout.each do |sub| %>
+             <p>There are <%= sub[1]%> trips with a profile of <%=sub[0]%></p>
+          <%end%>
+          <p><strong>Customers: </strong><%=@trips.percentage_of_subscriber_type[0]%>% of the total user profiles</p>
+          <p><strong>Subscribers: </strong><%=@trips.percentage_of_subscriber_type[1]%>% of the total user profiles</p>
+        </div>
+      </div>
+
+
+
+
+      <div class="panel panel-warning">
         <div class="panel-heading">
           <h3 class="panel-title">Total rides per year</h3>
         </div>
         <div class="panel-body">
-          <% @trips.sum_trips_per_year(@trips.years).each_pair do |k, v|%>
+               <%(0..@trips.years.length).each do |index| %>
+          <% @trips.sum_trips_per_year(@trips.years[index]).each_pair do |k, v|%>
             <p>  <strong><%= k.to_i %></strong>:   <%= v %> rides</p>
           <%end%>
+          <%end%>
+
         </div>
       </div>
+
         <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">User profile breakdown</h3>
@@ -88,11 +149,24 @@
         </div>
       </div>
 
-      <p><span class="label label-success">Date with highest number of trips</span></p>
-      <p><span class="label label-success"><%=@trips.date_with_most_trips[1].join("/")%> had <%=@trips.date_with_most_trips[0]%> trips </span></p>
+       <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Date with highest number of trips</h3>
+        </div>
+        <div class="panel-body">
+             <p><%=@trips.date_with_most_trips[1].join("/")%> had <%=@trips.date_with_most_trips[0]%> trips </p>
+        </div>
+      </div>
 
-      <p><span class="label label-danger">Date with lowest number of trips</span></p>
-      <p><span class="label label-danger"><%=@trips.date_with_least_trips[1].join("/")%> had <%=@trips.date_with_least_trips[0]%> trips </span></p>
+       <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Date with lowest number of trips</h3>
+        </div>
+        <div class="panel-body">
+             <p><%=@trips.date_with_least_trips[1].join("/")%> had <%=@trips.date_with_least_trips[0]%> trips </p>
+        </div>
+      </div>
+
 
       </div>
   </div>

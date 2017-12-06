@@ -10,13 +10,14 @@ DatabaseCleaner.clean
 stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :symbol
 stations.each do |row|
   Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
+  ActiveRecord::Base.connection.reset_pk_sequence!('stations')
 end
 
 
 trips = CSV.open './db/csv/trip.csv', headers:true, header_converters: :symbol
 trips.each do |row|
-  start_date = DateTime.strptime(row[:start_date], '%m/%d/%Y %k:%M')
-  end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y %k:%M')
+  start_date = DateTime.strptime(row[:start_date],'%m/%d/%Y' )
+  end_date = DateTime.strptime(row[:end_date], '%m/%d/%Y')
 
   Trip.create!(
       duration: row[:duration],

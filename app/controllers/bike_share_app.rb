@@ -20,7 +20,7 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/new"
   end
 
-  post '/trips/new' do
+  post '/trips' do
     trip = Trip.create(params[:trip])
     redirect '/trips'
   end
@@ -48,7 +48,11 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @trips = Trip.all
+<<<<<<< HEAD
     @station =
+=======
+    # binding.pry
+>>>>>>> 11d9348d6aebd4769ff3427d324595ef4d68b4ed
     erb :"trips/dashboard"
   end
 
@@ -72,7 +76,12 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/edit"
   end
 
+<<<<<<< HEAD
   post '/stations/new' do
+=======
+
+  post '/stations' do
+>>>>>>> 11d9348d6aebd4769ff3427d324595ef4d68b4ed
     station = Station.create(params[:station])
     redirect '/stations'
   end
@@ -84,8 +93,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    @trips = Trip.all
-    # binding.pry
+    @trips = Trip.where(start_station_id: @station.id)
     erb :"stations/show"
   end
 
@@ -116,7 +124,12 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/edit"
   end
 
+<<<<<<< HEAD
   post '/conditions/new' do
+=======
+
+  post '/conditions' do
+>>>>>>> 11d9348d6aebd4769ff3427d324595ef4d68b4ed
     condition = Condition.create(params[:condition])
     redirect '/conditions'
   end
@@ -138,9 +151,13 @@ class BikeShareApp < Sinatra::Base
     redirect '/conditions'
   end
 
+<<<<<<< HEAD
 
   get '/weather-dashboard' do
     @conditions = Condition.all
+=======
+  get '/weather-dashboard' do
+>>>>>>> 11d9348d6aebd4769ff3427d324595ef4d68b4ed
 
     erb :"conditions/dashboard"
   end

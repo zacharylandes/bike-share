@@ -28,35 +28,64 @@
   <div class="row">
       <div class="col-xs-12">
 
-        <div class = "total_station">
-          <p><span class="label label-primary">Total station count</span></p>
-          <p><span class="label label-primary"><%= @stations.count %></span></p>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Total station count</h3>
+          </div>
+          <div class="panel-body">
+           <p><%= @stations.count %></p>
+          </div>
+        </div>
+     
+
+       <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Average bikes per station</h3>
+          </div>
+          <div class="panel-body">
+           <p><%= @stations.average_dock_count%></p>
+          </div>
+        </div>
+        
+
+      <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Most bikes per station</h3>
+          </div>
+          <div class="panel-body">
+           <p><%= @stations.maximum_dock_count%></p>
+          </div>
         </div>
 
-      <div class = "average_bike">
-        <p><span class="label label-info">Average bikes per station</span></p>
-        <p><span class="label label-info"><%= @stations.average_dock_count%></span></p>
-      </div>
-        
-      <div class = "most_bike">  
-        <p><span class="label label-success">Most bikes per station</span></p>
-        <p><span class="label label-success"><%= @stations.maximum_dock_count%></span></p>
-      </div>
+     
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">Least bikes per station</h3>
+          </div>
+          <div class="panel-body">
+           <p><%= @stations.minimum_dock_count%></p>
+          </div>
+        </div>
 
-      <div class = "least_bike">
-        <p><span class="label label-danger">Least bikes per station</span></p>
-        <p><span class="label label-danger"><%= @stations.minimum_dock_count%></span></p>
-      </div>
+       <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Most recently installed station</h3>
+          </div>
+          <div class="panel-body">
+           <p><%= @stations.recently_installed_station %></p>
+          </div>
+        </div>
 
-      <div class = "most_recent">
-        <p><span class="label label-default">Most recently installed station</span></p>
-        <p><span class="label label-default"><%= @stations.recently_installed_station %></span></p>
-      </div>
-
-      <div class = "oldest">
-        <p><span class="label label-warning">Oldest station</span></p>
-        <p><span class="label label-warning"><%= @stations.oldest_station %></span></p>
-      </div>
+  
+       <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">Oldest station</h3>
+          </div>
+          <div class="panel-body">
+           <p><%= @stations.oldest_station %></p>
+          </div>
+        </div>
 
 
         <div class="panel panel-success">

@@ -1,19 +1,41 @@
-<h1><a href="/conditions">Conditions Index</a></h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/conditions">Conditions</a></li>
+            <li class="active"><%= @condition.date %></li>
+          </ol>
 
-<label for="max_temperature_f">Max Temp</label>
-<h3><%= @condition.max_temperature_f %></h3>
-
-<label for="min_temperature_f">Mean Temp</label>
-<h3><%= @condition.mean_temperature_f %></h3>
-
-<label for="mean_temperature_f">Min Temp</label>
-<h3><%= @condition.mean_temperature_f %></h3>
-
-<label for="mean_humidity">Mean Humidity</label>
-<h3><%= @condition.mean_humidity %></h3>
-
-<label for="mean_visibility_miles">Mean Visibility</label>
-<h3><%= @condition.mean_visibility_miles %></h3>
-
-<label for="max_wind_Speed_mph">Max Wind speedd</label>
-<h3><%= @condition.mean_wind_speed_mph %></h3>
+          <h1><%= @condition.date %></h1>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Max Temp</th>
+                  <th>Mean Temp</th>
+                  <th>Min Temp</th>
+                  <th>Mean Humidity</th>
+                  <th>Mean Visibility (miles)</th>
+                  <th>Mean Wind Speed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= @condition.max_temperature_f %></th>
+                  <td><%= @condition.mean_temperature_f %></td>
+                  <td><%= @condition.min_temperature_f %></td>
+                  <td><%= @condition.mean_humidity %></td>
+                  <td><%= @condition.mean_visibility_miles %></td>
+                  <td><%= @condition.mean_wind_speed_mph %></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>

@@ -41,6 +41,20 @@ describe "when a visitor visits the trips index" do
     Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
      visit '/trips'
     click_on('Delete')
+<<<<<<< HEAD:spec/features/user_visits_trips_index_spec.rb
+=======
+
+    expect(page).to have_content("Trip details")
+    expect(Trip.count).to eq(0)
+  end
+
+  it "clicks the delete button which deletes a trip and redirects to index" do
+    date = DateTime.new(5-14-2010)
+    Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
+
+    visit '/trips'
+    click_on('Delete')
+>>>>>>> 11d9348d6aebd4769ff3427d324595ef4d68b4ed:spec/features/trips/user_visits_trips_index_spec.rb
 
     expect(page).to have_content("Trip details")
     expect(Trip.count).to eq(0)
