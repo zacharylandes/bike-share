@@ -89,15 +89,10 @@
       </div>
 
       <p><span class="label label-success">Date with highest number of trips</span></p>
-      <p><span class="label label-success"><%=@trips.date_with_most_trips[0]%> had <%=@trips.date_with_most_trips[1]%> trips </span></p>
+      <p><span class="label label-success"><%=@trips.date_with_most_trips[1].join("/")%> had <%=@trips.date_with_most_trips[0]%> trips </span></p>
 
       <p><span class="label label-danger">Date with lowest number of trips</span></p>
-      <p><span class="label label-danger"><%=@trips.date_with_least_trips[0]%> had <%=@trips.date_with_least_trips[1]%> trips </span></p>
-
-      <p> <strong>Date with lowest number of trips:</strong>
-
-      <p><%=@trips.date_with_least_trips[0]%> had <%=@trips.date_with_least_trips[1]%> trips</p>
-
+      <p><span class="label label-danger"><%=@trips.date_with_least_trips[1].join("/")%> had <%=@trips.date_with_least_trips[0]%> trips </span></p>
 
       </div>
   </div>
