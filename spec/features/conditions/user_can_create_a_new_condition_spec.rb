@@ -14,6 +14,7 @@ describe "When a user visits /conditions/new" do
     page.find("#btn_submit").click
 
     expect(current_path).to eq("/conditions")
+    expect(page).to have_content("11.1")
     
    
    
