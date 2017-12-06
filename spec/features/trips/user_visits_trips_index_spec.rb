@@ -46,5 +46,16 @@ describe "when a visitor visits the trips index" do
     expect(Trip.count).to eq(0)
   end
 
+  it "clicks the delete button which deletes a trip and redirects to index" do
+    date = DateTime.new(5-14-2010)
+    Trip.create!(duration: "5", start_date: date, start_station_name: "Train", end_date: date, end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 1)
+
+    visit '/trips'
+    click_on('Delete')
+
+    expect(page).to have_content("Trip details")
+    expect(Trip.count).to eq(0)
+  end
+
 
 end
