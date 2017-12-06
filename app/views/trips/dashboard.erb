@@ -39,12 +39,6 @@
       <p><span class="label label-danger">Shortest ride</span></p>
       <p><span class="label label-danger"><%= @trips.shortest_ride %></span></p>
 
-      <p><span class="label label-warning">Station with most rides at start</span></p>
-      <p><span class="label label-warning"><%= @trips.station_with_most_rides_at_start%></span></p>
-
-      <p><span class="label label-default">Station with most rides at end</span></p>
-      <p><span class="label label-default"><%= @trips.station_with_most_rides_at_end%></span></p>
-
       <div class="panel panel-success">
         <div class="panel-heading">
           <h3 class="panel-title">Monthly trip breakdown for each year</h3>
@@ -59,14 +53,13 @@
       <p><strong>Average Trip Length: </strong><%= @trips.average_trip_length %></p>
       <p><strong>Longest Ride: </strong><%= @trips.longest_ride%></p>
       <p><strong>Shortest Ride: </strong><%= @trips.shortest_ride%></p>
-      <p><strong>Station with most rides at start: </strong><%= @trips.shortest_ride%></p>
-      <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start%></p>
-      <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end%></p>
-      <p> <strong>Most Ridden bike:</strong> bike with id <%=@trips.most_ridden_bike[0] %> which has <%=@trips.most_ridden_bike[1] %> trips</p>
-      <p> <strong> Least Ridden bike:</strong> bike with id <%=@trips.least_ridden_bike[0] %> which has <%=@trips.least_ridden_bike[1] %> trip </p>
+      <p><strong>Station with most rides at start: </strong><%= @trips.station_with_most_rides_at_start.start_station_name%></p>
+      <p><strong>Station with most rides at end: </strong><%= @trips.station_with_most_rides_at_end.end_station_name%></p>
+      <p> <strong>Most Ridden bike:</strong> bike with id <%=@trips.most_and_least_ridden_bikes.first[0] %> which has <%=@trips.most_and_least_ridden_bikes.first[1] %> trips</p>
+      <p> <strong> Least Ridden bike:</strong> bike with id <%=@trips.most_and_least_ridden_bikes.last[0] %> which has <%=@trips.most_and_least_ridden_bikes.last[1] %> trip </p>
       <p><strong>User profile Breakdown:</strong></p>
-      <p><%@trips.subscription_type_breakout.to_a.map do |sub| %>
-        <p>There are <%= sub[1]%> trips with a  profile of <%=sub [0]%></p>
+      <p><%@trips.subscription_type_breakout.each do |sub| %>
+        <p>There are <%= sub[1]%> trips with a profile of <%=sub[0]%></p>
        <%end%>
       <p><strong>Customers: </strong><%=@trips.percentage_of_subscriber_type[0]%>% of the total user profiles</p>
       <p><strong>Subscribers: </strong><%=@trips.percentage_of_subscriber_type[1]%>% of the total user profiles</p>
@@ -82,13 +75,6 @@
           <%end%>
         </div>
       </div>
-
-      <p><span class="label label-info">Most ridden bike</span></p>
-      <p><span class="label label-info">Bike with ID <%=@trips.most_ridden_bike[0] %> which has <%=@trips.most_ridden_bike[1] %> trips </span></p>
-
-      <p><span class="label label-warning">Least ridden bike</span></p>
-      <p><span class="label label-warning">Bike with ID <%=@trips.least_ridden_bike[0] %> which has <%=@trips.least_ridden_bike[0] %> trips </span></p>
-
         <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">User profile breakdown</h3>
@@ -103,15 +89,10 @@
       </div>
 
       <p><span class="label label-success">Date with highest number of trips</span></p>
-      <p><span class="label label-success"><%=@trips.date_with_most_trips[0]%> had <%=@trips.date_with_most_trips[1]%> trips </span></p>
+      <p><span class="label label-success"><%=@trips.date_with_most_trips[1].join("/")%> had <%=@trips.date_with_most_trips[0]%> trips </span></p>
 
       <p><span class="label label-danger">Date with lowest number of trips</span></p>
-      <p><span class="label label-danger"><%=@trips.date_with_least_trips[0]%> had <%=@trips.date_with_least_trips[1]%> trips </span></p>
-
-      <p> <strong>Date with lowest number of trips:</strong>
-
-      <p><%=@trips.date_with_least_trips[0]%> had <%=@trips.date_with_least_trips[1]%> trips</p>
-
+      <p><span class="label label-danger"><%=@trips.date_with_least_trips[1].join("/")%> had <%=@trips.date_with_least_trips[0]%> trips </span></p>
 
       </div>
   </div>
