@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-xs-12">
 
-        
+
         <ol class="breadcrumb">
               <li><a href="/">Home</a></li>
               <li><a href="/trips">Trips</a></li>
@@ -18,7 +18,7 @@
         <h1>Trips Dashboard</h1>
         <p>Explore data analytics for trips in your area</p>
 
-       
+
 
         </div>
     </div>
@@ -33,7 +33,7 @@
           <h3 class="panel-title">Average trip length</h3>
         </div>
         <div class="panel-body">
-            <p><%= @trips.average_trip_length %></p>
+            <p><%= @trips.average_trip_length %> Minutes</p>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
           <h3 class="panel-title">Longest ride</h3>
         </div>
         <div class="panel-body">
-            <p><%= @trips.longest_ride%></p>
+            <p><%= @trips.longest_ride%> Minutes</p>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
           <h3 class="panel-title">Shortest ride</h3>
         </div>
         <div class="panel-body">
-            <p><%= @trips.shortest_ride %></p>
+            <p><%= @trips.shortest_ride %> Seconds</p>
         </div>
       </div>
 
@@ -102,7 +102,7 @@
           <h3 class="panel-title">Least Ridden bike</h3>
         </div>
         <div class="panel-body">
-             <p>Bike with id <%=@trips.most_and_least_ridden_bikes.last[0] %> which has <%=@trips.most_and_least_ridden_bikes.last[1] %> trip </p>  
+             <p>Bike with id <%=@trips.most_and_least_ridden_bikes.last[0] %> which has <%=@trips.most_and_least_ridden_bikes.last[1] %> trip </p>
         </div>
       </div>
 
@@ -119,7 +119,7 @@
         </div>
       </div>
 
-      
+
 
 
       <div class="panel panel-warning">
@@ -132,7 +132,7 @@
             <p>  <strong><%= k.to_i %></strong>:   <%= v %> rides</p>
           <%end%>
           <%end%>
-          
+
         </div>
       </div>
 
@@ -154,7 +154,7 @@
           <h3 class="panel-title">Date with highest number of trips</h3>
         </div>
         <div class="panel-body">
-             <p><%=@trips.date_with_most_trips[1].join("/")%> had <%=@trips.date_with_most_trips[0]%> trips </p>  
+             <p><%=@trips.date_with_most_trips[1].join("/")%> had <%=@trips.date_with_most_trips[0]%> trips </p>
         </div>
       </div>
 
@@ -163,7 +163,7 @@
           <h3 class="panel-title">Date with lowest number of trips</h3>
         </div>
         <div class="panel-body">
-             <p><%=@trips.date_with_least_trips[1].join("/")%> had <%=@trips.date_with_least_trips[0]%> trips </p>  
+             <p><%=@trips.date_with_least_trips[1].join("/")%> had <%=@trips.date_with_least_trips[0]%> trips </p>
         </div>
       </div>
 

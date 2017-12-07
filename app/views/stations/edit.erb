@@ -22,19 +22,35 @@
             <p>Alter the details of your station below</p>
             <input type="hidden" name="_method" value="PUT" />
 
-            <label for="station_name">Station Name</label>
-            <input type='text' class="form-control" name='station[name]' value="<%= @station.name %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-3 ">
+                <label for="station_name">Station Name</label>
+                <input type='text' class="form-control" name='station[name]' value="<%= @station.name %>"/><br/>
+              </div>
+            </div>
 
-            <label for="dock_count">Dock Count</label>
-            <input type='number' class="form-control" name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="dock_count">Dock Count</label>
+                <input type='number' class="form-control" name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
+              </div>
+            </div>
 
-            <label for="city">City</label>
-            <input type='text' class="form-control" name='station[city]' value="<%= @station.city %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="city">City</label>
+                <input type='text' class="form-control" name='station[city]' value="<%= @station.city %>"/><br/>
+              </div>
+            </div>
 
-            <label for="installation_date">Installation Date</label>
-            <input id = "date" type="date" class="form-control" name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="installation_date">Installation Date</label>
+                <input id = "date" type="date" class="form-control" name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
+              </div>
+            </div>
 
-            <div class="sumbit_button" align="center">
+            <div class="sumbit_button">
               <input id = "btn_submit" class="btn btn-success" type='submit'/>
             </div>
           </form>

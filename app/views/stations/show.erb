@@ -87,9 +87,30 @@
             </div>
 
           <%end%>
+          <h3><%=@station.name%></h3>
+            <p>Find your station below</p>
+            <div id="googleMap" style="width:100%;height:400px;"></div>
+
+            <script>
+              function loadMap() {
+
+                var mapOptions = {
+                  center:new google.maps.LatLng(<%= @station.lat %>, <%= @station.long %>),
+                  zoom:15
+                }
+
+                var map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+                var marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(<%= @station.lat %>, <%= @station.long %>),
+                  map: map,
+                });
+              }
+            </script>
+
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF3Owq_bKBfX6gB0Qcy3KT21SCXB-_UJE&callback=loadMap"></script>
 
         </div>
       </div>
     </div>
-
-

@@ -15,7 +15,6 @@
              </ol>
            <h1>Weather dashboard </h1>
            <p>Explore data analytics for conditions in your area</p>
-
           </div>
       </div>
     </div>
@@ -31,12 +30,12 @@
               <h3 class="panel-title">Breakdown for temperature ranges</h3>
             </div>
             <div class="panel-body">
-              <% (40..80).step(10) do |n| %>
+              <% (40..100).step(10) do |n| %>
                 <p> <%= "#{n} to #{n + 10}" %>  Fahrenheit</p>
                 <p>Average Number of rides in this range: <%=  Condition.average_number_of_rides_from_temp(n) %></p>
                 <p> Highest number of rides in this range: <%= Condition.highest_number_of_rides_from_temp(n) %></p>
                 <p>Lowest number of rides in this range: <%= Condition.lowest_number_of_rides_from_temp(n) %></p>
-              <% end %> 
+              <% end %>
             </div>
           </div>
 
@@ -94,7 +93,7 @@
               <h3 class="panel-title">Weather on date with lowest number of rides</h3>
             </div>
             <div class="panel-body">
-              <p>date: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.date%></p>
+              <p>date: <%= Condition.weather_on_days_with_lowest_number_of_rides.first.date%></p>
               <p> Max Temperature: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.max_temperature_f%></p>
               <p> Mean Temperature: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.mean_temperature_f%></p>
               <p> Min Temperature: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.min_temperature_f%></p>

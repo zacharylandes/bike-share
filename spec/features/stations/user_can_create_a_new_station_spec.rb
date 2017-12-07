@@ -14,8 +14,8 @@ describe "When a user visits /stations/new" do
     expect(current_path).to eq("/stations")
     expect(page).to have_content("Paddington")
     expect(page).to have_content("100")
-
   end
+
   it "they can create another new station" do
     visit "/stations/new"
 
@@ -31,5 +31,16 @@ describe "When a user visits /stations/new" do
     expect(page).to have_content("10")
   end
 
+  it "they cannot create another new station without the correct attributes" do
+    visit "/stations/new"
+
+    fill_in "station[name]", with: "Winters"
+    fill_in "station[installation_date]", with: "8/6/2013"
+    fill_in "station[city]", with: "London"
+
+    page.find("#btn_submit").click
+
+    expect(Station.count).to eq(0)
+  end
 
 end

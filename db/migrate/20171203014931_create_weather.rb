@@ -1,4 +1,5 @@
 class CreateWeather < ActiveRecord::Migration[5.1]
+
   def change
     create_table "conditions", force: :cascade do |t|
       t.datetime "date"

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "When a user makes changes to a conditions information" do
+describe "When a user makes changes to conditions" do
   it "saves this new info to the database" do
     Station.create!(id: 2, name: "The station", dock_count: 33, city: "San Francisco", installation_date: "12/12/2017")
     Trip.create!(duration: "5", start_date: "05/04/2010", start_station_name: "Train", end_date: "05/04/2010", end_station_name: "California", bike_id: "540", subscription_type: "Subscriber", zip_code: "80219", start_station_id: 2, end_station_id:2)

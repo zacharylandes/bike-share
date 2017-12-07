@@ -21,31 +21,64 @@
             <p>Alter the details of your trip below</p>
             <input type="hidden" name="_method" value="PUT" />
 
-            <label for="duration">Duration</label>
-            <input type='number'class="form-control" name='trip[duration]' value="<%= @trip.duration %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="duration">Duration</label>
+                <input type='number'class="form-control" name='trip[duration]' value="<%= @trip.duration %>"/><br/>
+              </div>
+            </div>
 
-            <label for="start_date">Start Date</label>
-            <input type='date' class="form-control" name='trip[start_date]' value="<%= @trip.start_date %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="start_date">Start Date</label>
+                <input type='date' class="form-control" name='trip[start_date]' value="<%= @trip.start_date %>"/><br/>
+              </div>
+            </div>
 
-            <label for="start_station_name">Start Station Name</label>
-            <input type='text' class="form-control" name='trip[start_station_name]' value="<%= @trip.start_station_name %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-4 ">
+                <label for="start_station_name">Start Station Name</label>
+                <input type='text' class="form-control" name='trip[start_station_name]' value="<%= @trip.start_station_name %>"/><br/>
+              </div>
+            </div>
 
-            <label for="end_date">End Date</label>
-            <input type='date' class="form-control" name='trip[end_date]' value="<%= @trip.end_date %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="end_date">End Date</label>
+                <input type='date' class="form-control" name='trip[end_date]' value="<%= @trip.end_date %>"/><br/>
+              </div>
+            </div>
 
-            <label for="end_station_name">End Station</label>
-            <input type='text' class="form-control" name='trip[end_station_name]' value="<%= @trip.end_station_name %>"/><br/>
 
-            <label for="bike_id">Bike ID</label>
-            <input type='number' class="form-control" name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-4 ">
+              <label for="end_station_name">End Station</label>
+              <input type='text' class="form-control" name='trip[end_station_name]' value="<%= @trip.end_station_name %>"/><br/>
+              </div>
+            </div>
 
-            <label for="subscription_type">Subscription</label>
-            <input type='text' class="form-control" name='trip[subscription_type]' value="<%= @trip.subscription_type %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="bike_id">Bike ID</label>
+                <input type='number' class="form-control" name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/>
+             </div>
+            </div>
 
-            <label for="zip_code">Zip Code</label>
-            <input type='number' class="form-control" name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="subscription_type">Subscription</label>
+                <input type='text' class="form-control" name='trip[subscription_type]' value="<%= @trip.subscription_type %>"/><br/>
+              </div>
+            </div>
 
-            <div class="sumbit_button" align="center">
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="zip_code">Zip Code</label>
+                <input type='number' class="form-control" name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/>
+              </div>
+            </div>
+
+            <div class="sumbit_button">
               <input id = "btn_submit" class="btn btn-success" type='submit'/>
             </div>
 
@@ -54,8 +87,6 @@
         </div>
       </div>
     </div>
-
-
 
   </body>
 </html>

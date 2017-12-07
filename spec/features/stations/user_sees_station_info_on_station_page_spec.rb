@@ -22,6 +22,4 @@ describe "When a user visits station page" do
 
       page.status_code.should == 200
     end
-
-
 end
