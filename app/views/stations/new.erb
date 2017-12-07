@@ -19,19 +19,39 @@
           <form action="/stations" method="post">
             <p>Enter details for your new station below</p>
 
-            <label for="name" >Name</label>
-            <input type='text' class="form-control" name='station[name]' placeholder="e.g. St James Park" required/><br/>
 
-            <label for="city">City</label>
-            <input type='text' class="form-control" name='station[city]' placeholder="e.g. San Jose" required/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="name" >Name</label>
+                <input type='text' class="form-control" name='station[name]' placeholder="e.g. St James Park" required/><br/>
+              </div>
+            </div>
 
-            <label for="dock_count">Dock Count</label>
-            <input type='number' class="form-control" name='station[dock_count]' placeholder="e.g. 15" required/><br/>
 
-            <label for="installation_date">Installation Date</label>
-            <input type='date' class="form-control" name='station[installation_date]' placeholder="e.g. 8/6/2013" required/><br/>
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="city">City</label>
+                <input type='text' class="form-control" name='station[city]' placeholder="e.g. San Jose" required/><br/>
+              </div>
+            </div>
 
-            <div class="sumbit_button" align="center">
+
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="dock_count">Dock Count</label>
+                <input type='number' class="form-control" name='station[dock_count]' placeholder="e.g. 15" required/><br/>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-group col-lg-2 ">
+                <label for="installation_date">Installation Date</label>
+                <input type='date' class="form-control" name='station[installation_date]' placeholder="e.g. 8/6/2013" required/><br/>
+              </div>
+            </div>
+
+            <div class="sumbit_button">
               <input id="btn_submit" class="btn btn-success" type='submit'/>
             </div>
 

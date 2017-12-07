@@ -1,4 +1,5 @@
 module Highest
+  
   def highest_number_of_rides_from_temp(temp_floor)
     condition_trips(temp_floor).values.max
   end

@@ -29,13 +29,13 @@ On `/station-dashboard`:
 
 ### Iteration 4
 
-* [ ] See all trips
-* [ ] See one trip
-* [ ] Create a new trip
-* [ ] Update a trip
-* [ ] Delete a trip (from either index or show)
-* [ ] All attributes (except zip code) must be present: duration, start date, start station, end date, end station, bike ID, subscription type)
-* [ ] Trips are paginated in groups of 30
+* [X] See all trips
+* [X] See one trip
+* [X] Create a new trip
+* [X] Update a trip
+* [X] Delete a trip (from either index or show)
+* [X] All attributes (except zip code) must be present: duration, start date, start station, end date, end station, bike ID, subscription type)
+* [X] Trips are paginated in groups of 30
 
 ### Iteration 5
 
@@ -45,36 +45,36 @@ N/A
 
 On `/trips-dashboard`:
 
-* [ ] Average duration of a ride.
-* [ ] Longest ride.
-* [ ] Shortest ride.
-* [ ] Station with the most rides as a starting place.
-* [ ] Station with the most rides as an ending place.
-* [ ] Month by Month breakdown of number of rides with subtotals for each year.
-* [ ] Most ridden bike with total number of rides for that bike.
-* [ ] Least ridden bike with total number of rides for that bike.
-* [ ] User subscription type breakout with both count and percentage.
-* [ ] Single date with the highest number of trips with a count of those trips.
-* [ ] Single date with the lowest number of trips with a count of those trips.
+* [X] Average duration of a ride.
+* [X] Longest ride.
+* [X] Shortest ride.
+* [X] Station with the most rides as a starting place.
+* [X] Station with the most rides as an ending place.
+* [X] Month by Month breakdown of number of rides with subtotals for each year.
+* [X] Most ridden bike with total number of rides for that bike.
+* [X] Least ridden bike with total number of rides for that bike.
+* [X] User subscription type breakout with both count and percentage.
+* [X] Single date with the highest number of trips with a count of those trips.
+* [X] Single date with the lowest number of trips with a count of those trips.
 
 On an individual station show page the additional information should be present:
 
-* [ ] Number of rides started at this station.
-* [ ] Number of rides ended at this station.
-* [ ] Most frequent destination station (for rides that began at this station).
-* [ ] Most freuqnet origination station (for rides that ended at this station).
-* [ ] Date with the highest number of trips started at this station.
-* [ ] Most frequent zip code for users starting trips at this station.
-* [ ] Bike ID most frequently starting a trip at this station.
+* [X] Number of rides started at this station.
+* [X] Number of rides ended at this station.
+* [X] Most frequent destination station (for rides that began at this station).
+* [X] Most freuqnet origination station (for rides that ended at this station).
+* [X] Date with the highest number of trips started at this station.
+* [x] Most frequent zip code for users starting trips at this station.
+* [X] Bike ID most frequently starting a trip at this station.
 
 ### Iteration 7
 
-* [ ] See all conditions
-* [ ] See one condition
-* [ ] Create a new condition
-* [ ] Update a condition
-* [ ] Delete a station (from both index or show)
-* [ ] Conditions are paginated by groups of 30
+* [X] See all conditions
+* [X] See one condition
+* [X] Create a new condition
+* [X] Update a condition
+* [X] Delete a station (from both index or show)
+* [X] Conditions are paginated by groups of 30
 
 ### Iteration 8
 
@@ -84,12 +84,12 @@ N/A
 
 On `/weather-dashboard`:
 
-* [ ] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with a high temperature in 10 degree chunks (e.g. average number of rides on days with high temps between fifty and sixty degrees)
-* [ ] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with precipitation in half-inch increments.
-* [ ] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean wind speeds in four mile increments.
-* [ ] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean visibility in miles in four mile increments.
+* [X] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with a high temperature in 10 degree chunks (e.g. average number of rides on days with high temps between fifty and sixty degrees)
+* [X] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with precipitation in half-inch increments.
+* [X] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean wind speeds in four mile increments.
+* [X] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean visibility in miles in four mile increments.
 
 Additional information on the `trip-dashboard`:
 
-* [ ] Weather on the day with the highest rides.
-* [ ] Weather on the day with the lowest rides.
+* [X] Weather on the day with the highest rides.
+* [X] Weather on the day with the lowest rides.

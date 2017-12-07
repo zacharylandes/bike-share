@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20171203014931) do
     t.integer "dock_count"
     t.text "city"
     t.text "installation_date"
+    t.float "lat"
+    t.float "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
